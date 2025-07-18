@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'normalized';
+  src: url('../../../public/NormalidadCompact-Regular.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'normalized', sans-serif;
+}
+
