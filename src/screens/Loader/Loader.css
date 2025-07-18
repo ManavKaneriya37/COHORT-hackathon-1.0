@@ -1,10 +1,10 @@
-
 .loader-container {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  perspective: 1000px;
 }
 
 .loader-content {
@@ -15,4 +15,58 @@
   justify-content: center;
   z-index: 50;
   background-color: #f8fafc;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity, clip-path;
 }
+
+.primetxt {
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.loading-dots {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: scale(0.8);
+}
+@font-face {
+  font-family: 'normalized';
+  src: url('../../../public/NormalidadCompact-Regular.ttf');
+}
+.loader-counter {
+  font-family: 'normalized', sans-serif;
+  font-size: 8px;
+  font-weight: bold;
+  fill: #4f46e5;
+}
+
+.loader-label {
+  font-size: 6px;
+  font-weight: 500;
+  fill: #4f46e5;
+  font-family: 'normalized', sans-serif;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  transform: translateY(-2px);
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out;
+  will-change: opacity;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-variant: small-caps;
+  font-feature-settings: 'smcp';
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transform: translateY(10px);
+}
+
+.highlight {
+    font-style: italic;
+  }
