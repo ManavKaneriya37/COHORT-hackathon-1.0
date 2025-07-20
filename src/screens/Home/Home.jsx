@@ -3,11 +3,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "../Loader/Loader";
 import "./Home.css";
+import NeuronParticles from "../../components/NeuronParticles";
+import { Canvas } from "@react-three/fiber";
+import ModelViewer from "../../components/ModelViewer";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const homeContentRef = useRef(null);
 
   const navref = useRef();
@@ -15,7 +18,11 @@ const Home = () => {
   const page2Ref = useRef();
   const page3Ref = useRef();
   const view1Ref = useRef();
+  const view2Ref = useRef();
   const bottleRef = useRef();
+  const slide1h1 = useRef();
+  const collectBtn = useRef();
+  const slide1 = useRef();
 
   useEffect(() => {
     if (!loading) {
@@ -50,30 +57,100 @@ const Home = () => {
         opacity: 1,
         y: 0,
         duration: 0.6,
-        stagger: 0.2,
+        stagger: 0.1,
         ease: "power2.inOut",
       },
       "-=0.5"
+    );
+
+    const el = slide1h1.current;
+    const words = el.textContent.split("");
+    el.innerHTML = "";
+
+    words.forEach((word) => {
+      el.innerHTML += `<span>${word}</span>`;
+    });
+
+    const spans = el.querySelectorAll("span");
+    console.log(spans);
+
+    tl.fromTo(
+      spans,
+      {
+        opacity: 0,
+        y: 100,
+      },
+      {
+        y: 0,
+        stagger: {
+          amount: 0.3,
+        },
+        opacity: 1,
+      }
+    );
+
+    tl.fromTo(
+      collectBtn.current,
+      {
+        opacity: 0,
+        scale: 0.7,
+      },
+      {
+        duration: 0.1,
+        ease: "power1.inOut",
+        opacity: 1,
+        scale: 1,
+      }
+    );
+
+    const allImgsPage1 = slide1.current.querySelectorAll("img");
+
+    tl.fromTo(
+      allImgsPage1,
+      {
+        opacity: 0,
+        scale: 0,
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        stagger: {
+          amount: 0.4,
+        },
+        duration: 0.3,
+      },
+      "-=0.5"
+    );
+
+    const page1H5 = slide1.current.querySelectorAll("h5");
+
+    tl.fromTo(
+      page1H5,
+      {
+        opacity: 0,
+      },
+      { opacity: 1 }
     );
 
     // Page 1 animation on load
     const page1Elements =
       page1Ref.current.querySelectorAll("img, h3, p, button");
 
-    tl.fromTo(
+    gsap.fromTo(
       page1Elements,
       { opacity: 0, y: 50, scale: 0.95 },
       {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 2,
+        duration: 1.8,
         stagger: 0.15,
+        delay: 0.4,
         ease: "elastic.inOut",
-        // scrollTrigger: {
-        //   trigger: page1Ref.current,
-        //   start: "top 15%",
-        // },
+        scrollTrigger: {
+          trigger: page1Ref.current,
+          start: "top bottom",
+        },
       },
       "-=0.4"
     );
@@ -123,14 +200,45 @@ const Home = () => {
     );
 
     gsap.to(bottleRef.current, {
-      y: 530,
+      y: "40rem",
       x: -80,
       rotate: 0, // Use rotate instead of transform
       scrollTrigger: {
         trigger: view1Ref.current, // Start scroll animation with the whole section
-        start: "top 90%",     // Start animation early
-    end: "+=600",    // when bottom of section hits top of viewport
-        scrub: 2
+        start: "top 90%", // Start animation early
+        end: "+=450", // when bottom of section hits top of viewport
+        scrub: 2,
+      },
+    });
+
+    view2Animation(tl);
+  };
+
+  const view2Animation = (tl) => {
+    const h5head = view2Ref.current.querySelector("h5");
+    tl.to(h5head, {
+      transform: "translate(-75rem, 90rem) rotate(-30deg)",
+      opacity: 1,
+      scrollTrigger: {
+        trigger: view2Ref.current,
+        start: "top bottom",
+        end: "+=900",
+        scrub: 4,
+      },
+    });
+
+    const allProducts = view2Ref.current.querySelectorAll("article .product");
+
+    tl.to(allProducts, {
+      opacity: 1,
+      duration: 2,
+      scrollTrigger: {
+        trigger: view2Ref.current,
+        start: "top bottom",
+        scrub: true,
+        stagger: {
+          amount: 0.3,
+        },
       },
     });
   };
@@ -153,26 +261,28 @@ const Home = () => {
             </div>
           </nav>
 
-          <section className="slide1">
-            <h1>PRIME: Hydration. Energy. Refuel.</h1>
+          <section className="slide1" ref={slide1}>
+            <h1 ref={slide1h1}>PRIME: Hydration. Energy. Refuel.</h1>
             <h5>THE ULTIMATE COLLECTORS TAKE HOME $1M USD*</h5>
             <img
               className="img1"
               src="src\Assets\Home slide 1\bottle1.webp"
               alt=""
             />
+
             <img
               ref={bottleRef}
               className="img2"
               src="src\Assets\page1center.png"
               alt=""
             />
+
             <img
               className="img3"
               src="src\Assets\Home slide 1\bottle2.webp"
               alt=""
             />
-            <button>Collect Now</button>
+            <button ref={collectBtn}>Collect Now</button>
           </section>
 
           <div className="view1" ref={view1Ref}>
@@ -188,18 +298,16 @@ const Home = () => {
                   alt=""
                   className="candy2"
                 />
-                <img
-                  className="centerImg"
-                  src="src/Assets/page1center.png"
-                  alt=""
-                />
-                <h3>Ice Pop</h3>
-                <p>
-                  Prime's Ice Pop flavor is a nostalgic blend of cherry, blue
-                  raspberry, and lemon-lime, offering a refreshing taste perfect
-                  for summer.
-                </p>
-                <button>BUY NOW</button>
+                <span></span>
+                <div className="content">
+                  <h3>Ice Pop</h3>
+                  <p>
+                    Prime's Ice Pop flavor is a nostalgic blend of cherry, blue
+                    raspberry, and lemon-lime, offering a refreshing taste
+                    perfect for summer.
+                  </p>
+                  <button>BUY NOW</button>
+                </div>
               </div>
             </div>
 
@@ -252,6 +360,116 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          <section className="view2" ref={view2Ref}>
+            <h5>Hydration</h5>
+
+            <article>
+              <div className="product product1">
+                <img src="src\Assets\view2\PRIME_hydration_white.webp" alt="" />
+                <h3>Prime Collector Series</h3>
+                <button>Know More</button>
+              </div>
+              <div className="product produc2">
+                <img src="src\Assets\view2\Sournova.webp" alt="" />
+                <h3>Sournova</h3>
+                <button>Know More</button>
+              </div>
+              <div className="product product3">
+                <img
+                  src="src\Assets\view2\Prime_hydration_PesoPluma.webp"
+                  alt=""
+                />
+                <h3>Peso Pluma</h3>
+                <button>Know More</button>
+              </div>
+              <div className="product product4">
+                <img
+                  src="src\Assets\view2\PrimeHydration_FutureFreeze.webp"
+                  alt=""
+                />
+                <h3>Future Freeze</h3>
+                <button>Know More</button>
+              </div>
+              <div className="product product5">
+                <img
+                  src="src\Assets\view2\Prime_hydration_CherryFreeze.webp"
+                  alt=""
+                />
+                <h3>Cherry Freeze</h3>
+                <button>Know More</button>
+              </div>
+            </article>
+          </section>
+
+          <section className="view3">
+            <h3>
+              RAPID
+              <br />
+              REHYDRATION
+            </h3>
+            <img
+              src="src\Assets\View3\PR_RapidRehydration_GO_Web_PDP_Front_2000x2000_fd03bf87-bb43-4ca6-9767-756907babcd5_600x.webp"
+              alt=""
+            />
+          </section>
+
+          <section className="view4">
+            <h2>ENERGY</h2>
+
+            <div className="canvas-row">
+              <div className="canvas-box">
+                <Canvas
+                  camera={{ position: [0, 1, 2] }}
+                  gl={{ toneMappingExposure: 0.6 }}
+                >
+                  <ambientLight intensity={1.5} />
+                  <directionalLight
+                    position={[3, 3, 3]}
+                    intensity={1}
+                    castShadow
+                  />
+                  <ModelViewer modelPath="src\Assets\View4\Drink1.glb" />
+                </Canvas>
+                <h4>Cherry Limeade</h4>
+                <button>LEARN MORE</button>
+              </div>
+
+              <div className="canvas-box">
+                <Canvas
+                  camera={{ position: [0, 1, 2] }}
+                  gl={{ toneMappingExposure: 0.6 }}
+                >
+                  <ambientLight intensity={1.5} />
+                  <directionalLight
+                    position={[3, 3, 3]}
+                    intensity={1}
+                    castShadow
+                  />
+                  <ModelViewer modelPath="src\Assets\View4\Drink2.glb" />
+                </Canvas>
+                <h4>Dripsicle</h4>
+                <button>LEARN MORE</button>
+              </div>
+
+              <div className="canvas-box">
+                <Canvas
+                  camera={{ position: [0, 1, 2] }}
+                  gl={{ toneMappingExposure: 0.6 }}
+                >
+                  <ambientLight intensity={1.5} />
+                  <directionalLight
+                    position={[3, 3, 3]}
+                    intensity={1}
+                    castShadow
+                  />
+                  <ModelViewer modelPath="src\Assets\View4\Drink3.glb" />
+                </Canvas>
+                <h4>Dripsicle</h4>
+                <button>LEARN MORE</button>
+              </div>
+            </div>
+          </section>
         </div>
       )}
     </>
