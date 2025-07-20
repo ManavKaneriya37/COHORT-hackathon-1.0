@@ -1,0 +1,204 @@
+@media (max-width: 768px) {
+  .hammenu {
+    display: flex;
+  }
+  nav .left,
+  nav .right {
+    display: none;
+    gap: 1.5rem;
+    flex-direction: column;
+    font-size: 0.7rem;
+  }
+
+  nav .middle {
+    font-size: 2.5rem;
+    letter-spacing: -0.1rem;
+    text-align: center;
+  }
+
+  .slide1 {
+    height: 80vh;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 2rem 0;
+
+    .img3 {
+      top: -65%;
+      left: 10%;
+      height: 17rem;
+      width: 17rem;
+    }
+    .img2 {
+      top: 10%;
+      left: 35%;
+    }
+    .img1 {
+      top: -20%;
+    }
+  }
+
+  .slide1 h1 {
+    font-size: 2.5rem;
+    width: 70%;
+  }
+
+  .slide1 h5 {
+    font-size: 0.7rem;
+    width: 100%;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  .slide1 img {
+    position: relative;
+    height: 10rem;
+    width: 10rem;
+  }
+
+  .slide1 button {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    scale: 1;
+    margin-top: 1rem;
+  }
+
+  .home-content .page1 {
+    .page1display {
+      .candy1 {
+        top: 45%;
+        left: 20%;
+      }
+      .candy2 {
+        top: 40%;
+        left: 40%;
+      }
+    }
+  }
+
+  .home-content .view1 {
+    .page2,
+    .page3 {
+      height: 90vh;
+    }
+
+    .page2 .page2display {
+      .obj1 {
+        top: 45%;
+        left: 10%;
+      }
+      .obj2 {
+        top: 47%;
+      }
+    }
+
+     .page3 .page3display {
+      .obj1 {
+        top: 45%;
+        left: 10%;
+      }
+    }
+  }
+
+  .page1display .content,
+  .page2display p,
+  .page3display p {
+    width: 90%;
+  }
+
+  .view2{
+    height: 180vh;
+  }
+
+  .view2 h5 {
+    font-size: 6rem;
+    letter-spacing: 2rem;
+    transform: translate(300rem, -500rem) rotate(-30deg);
+  }
+
+  .view2 article .product {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .view3 h3 {
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .view4 h2 {
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .view4 .canvas-box {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .view5 {
+    height: 90vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+
+    .can1{
+        left: -15%;
+    }
+    .can2{
+        left: 0%;
+    }
+    .can3{
+        left: 20%;
+    }
+    .can4{
+        left: 40%;
+    }
+  }
+
+  .view5 .left,
+  .view5 .right {
+    width: 100%;
+    position: relative;
+  }
+
+  .view5 .right{
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+  }
+
+  .view5 img {
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    margin: 0.5rem auto;
+  }
+
+  footer .top {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+
+  footer .bottom h3 {
+    font-size: 1.5rem;
+  }
+
+  footer .bottom input {
+    width: 100%;
+  }
+
+  footer .user-stuff {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  footer .user-stuff .links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

@@ -1,7 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { useGLTF, OrbitControls, Environment, Center } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import React, { useRef, useState, useEffect } from "react";
+import { useGLTF, OrbitControls, Environment, Center } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+// import Lenis from "@studio-freight/lenis";
 
 const ModelViewer = ({ modelPath }) => {
   const { scene } = useGLTF(modelPath);
@@ -14,8 +15,12 @@ const ModelViewer = ({ modelPath }) => {
     if (modelRef.current) {
       // Scale effect on hover
       const targetScale = hovered ? 1.1 : 1;
-      modelRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
-
+      modelRef.current.scale.lerp(
+        new THREE.Vector3(targetScale, targetScale, targetScale),
+        0.1
+      );
+    //   const lenis = new Lenis({ smooth: true });
+    //   lenis.raf(state.clock.getElapsedTime() * 1000);
       // Rotation effect on click
       if (clicked) {
         modelRef.current.rotation.y += delta * 2;
@@ -40,13 +45,13 @@ const ModelViewer = ({ modelPath }) => {
       {/* Environment for realistic PBR reflections */}
       <Environment preset="sunset" background={false} />
       <Center>
-      <primitive
-        ref={modelRef}
-        object={scene}
-        onPointerOver={() => setHovered(false)}
-        onPointerOut={() => setHovered(false)}
-        onClick={() => setClicked(!clicked)}
-      />
+        <primitive
+          ref={modelRef}
+          object={scene}
+          onPointerOver={() => setHovered(false)}
+          onPointerOut={() => setHovered(false)}
+          onClick={() => setClicked(!clicked)}
+        />
       </Center>
       <OrbitControls autoRotate autoRotateSpeed={10} enableZoom={false} />
     </>
