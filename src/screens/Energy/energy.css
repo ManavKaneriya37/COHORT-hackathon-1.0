@@ -1,0 +1,74 @@
+.energy-container {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    padding: 5rem 1rem;
+
+  h1 {
+    font-family: "Funnel Sans", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.9rem;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 3rem 0 5rem 0;
+  }
+
+  .energy-frame {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .energy-frame div {
+    flex: 1;
+    margin: 0 10px;
+  }
+
+  .energy-frame img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .energy-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 5rem;
+
+    .product-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 2rem 0;
+
+      img {
+        width: 20rem;
+        height: 20rem;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        border: 1px solid #000;
+        padding: 0.8rem 1.8rem;
+        font-family: "Funnel Sans", sans-serif;
+        letter-spacing: 0.5rem;
+        text-transform: uppercase;
+        font-size: 1rem;
+        background-color: transparent;
+        margin-top: 0.75rem;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      a:hover {
+        background-color: #000;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
