@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "../Loader/Loader";
 import "./Home.css";
-import "./responsive.css"
+import "./responsive.css";
 import { Canvas } from "@react-three/fiber";
 import ModelViewer from "../../components/ModelViewer";
 import "remixicon/fonts/remixicon.css";
@@ -13,7 +13,7 @@ import Lenis from "@studio-freight/lenis";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const homeContentRef = useRef(null);
 
   const navref = useRef();
@@ -34,10 +34,15 @@ const Home = () => {
   }, [loading]);
 
   useEffect(() => {
-    const lenis = new Lenis({ smooth: true, duration: 4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothTouch: true });
+    const lenis = new Lenis({
+      smooth: true,
+      duration: 4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothTouch: true,
+    });
 
     const animate = (time) => {
-      lenis.raf(time)
+      lenis.raf(time);
       requestAnimationFrame(animate);
     };
 
@@ -218,7 +223,7 @@ const Home = () => {
     );
 
     gsap.to(bottleRef.current, {
-      y: "40rem",
+      y: "35rem",
       x: -80,
       rotate: 0, // Use rotate instead of transform
       scrollTrigger: {
@@ -237,11 +242,17 @@ const Home = () => {
     tl.to(h5head, {
       transform: "translate(-75rem, 90rem) rotate(-30deg)",
       opacity: 1,
+      ease: "power2.inOut",
       scrollTrigger: {
         trigger: view2Ref.current,
         start: "top bottom",
-        end: "+=900",
-        scrub: 4,
+        end: "+=2000", // Increased scroll distance even more
+        scrub: {
+          trigger: true,
+          smooth: 3.5, // Increased smoothing
+          ease: "power2.inOut",
+          duration: 2, // Added duration
+        },
       },
     });
 
@@ -267,7 +278,21 @@ const Home = () => {
         <Loader onFinished={handleLoaderFinish} />
       ) : (
         <div ref={homeContentRef} className="home-content">
-          <div className="hammenu" style={{fontSize: "2rem",padding: "1rem 2rem" , margin: "0.4rem", display: "none", alignItems: "center", justifyContent: "center", backgroundColor: "#000", width: "3rem"}}><i style={{color: "#fff"}} className="ri-menu-2-line"></i></div>
+          <div
+            className="hammenu"
+            style={{
+              fontSize: "2rem",
+              padding: "1rem 2rem",
+              margin: "0.4rem",
+              display: "none",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#000",
+              width: "3rem",
+            }}
+          >
+            <i style={{ color: "#fff" }} className="ri-menu-2-line"></i>
+          </div>
           <nav ref={navref}>
             <div className="left">
               <h2>Shop near me</h2>
@@ -281,7 +306,7 @@ const Home = () => {
           </nav>
 
           <section className="slide1" ref={slide1}>
-            <h1 ref={slide1h1}>PRIME: Hydration. Energy. Refuel.</h1>
+            <h1 ref={slide1h1}>Refuel. Energy. Hydration.</h1>
             <h5>THE ULTIMATE COLLECTORS TAKE HOME $1M USD*</h5>
             <img
               className="img1"
@@ -357,7 +382,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="page page3" ref={page3Ref}>
+            <div className="page  page3" ref={page3Ref}>
               <div className="page3display">
                 <img
                   src="src/Assets/page3/Bunch_of_fresh_red_cherries_-3-removebg-preview 1.png"
@@ -427,10 +452,26 @@ const Home = () => {
               <br />
               REHYDRATION
             </h3>
-            <img
-              src="src\Assets\View3\PR_RapidRehydration_GO_Web_PDP_Front_2000x2000_fd03bf87-bb43-4ca6-9767-756907babcd5_600x.webp"
-              alt=""
-            />
+            <div className="imgs">
+              <div className="img">
+                <img
+                  src="src\Assets\View3\PR_RapidRehydration_GO_Web_PDP_Front_2000x2000_fd03bf87-bb43-4ca6-9767-756907babcd5_600x.png"
+                  alt=""
+                />
+              </div>
+              <div className="img">
+                <img
+                  src="src\Assets\View3\PR_RapidRehydration_OC_Web_PDP_Front_2000x2000_a0a85545-b084-4303-86d8-5ced85a845b1_600x.png"
+                  alt=""
+                />
+              </div>
+              <div className="img">
+                <img
+                  src="src\Assets\View3\PR_RapidRehydration_CBR_Web_PDP_Front_2000x2000_18fe6542-ade6-44fd-a8e5-1ef8b1fc5c84_600x.png"
+                  alt=""
+                />
+              </div>
+            </div>
           </section>
 
           <section className="view4">
@@ -476,7 +517,7 @@ const Home = () => {
                   />
                   <ModelViewer modelPath="src\Assets\View4\Drink3.glb" />
                 </LazyCanvas>
-                <h4>Dripsicle</h4>
+                <h4>Original</h4>
                 <button>LEARN MORE</button>
               </div>
             </div>

@@ -158,7 +158,15 @@ const Loader = ({ onFinished }) => {
         <svg width="100%" height="100%" viewBox="-300 -150 600 300">
           <defs>
             <clipPath id="text-mask">
-              <text textAnchor="middle" dy=".3em" fontSize="100" letterSpacing="-5" fontFamily="Arial, sans-serif" fontWeight="bold">
+              <text 
+                textAnchor="middle" 
+                dy="-0.1em" 
+                fontSize="100" 
+                letterSpacing="-5" 
+                fontFamily="Arial, sans-serif" 
+                fontWeight="bold"
+                className="prime-text"  // Added class for mobile styling
+              >
                 PRIME
               </text>
             </clipPath>
@@ -169,11 +177,34 @@ const Loader = ({ onFinished }) => {
             </linearGradient>
           </defs>
 
-          <text ref={textOutlineRef} textAnchor="middle" dy=".3em" fill="none" stroke="#94a3b8" strokeWidth="1" fontSize="100" letterSpacing="-5" fontFamily="Arial, sans-serif" fontWeight="bold">
+          <text 
+            ref={textOutlineRef} 
+            textAnchor="middle" 
+            dy="-0.1em" 
+            fill="none" 
+            stroke="#94a3b8" 
+            strokeWidth="1" 
+            fontSize="100" 
+            letterSpacing="-5" 
+            fontFamily="Arial, sans-serif" 
+            fontWeight="bold"
+            className="prime-text"  // Added class for mobile styling
+          >
             PRIME
           </text>
 
-          <text ref={textSolidRef} textAnchor="middle" dy=".3em" fill="#1e293b" fontSize="100" letterSpacing="-5" fontFamily="Arial, sans-serif" fontWeight="bold" clipPath="url(#text-mask)">
+          <text 
+            ref={textSolidRef} 
+            textAnchor="middle" 
+            dy="-0.1em" 
+            fill="#1e293b" 
+            fontSize="100" 
+            letterSpacing="-5" 
+            fontFamily="Arial, sans-serif" 
+            fontWeight="bold"
+            clipPath="url(#text-mask)"
+            className="prime-text"  // Added class for mobile styling
+          >
             PRIME
           </text>
           
@@ -191,12 +222,12 @@ const Loader = ({ onFinished }) => {
           
           {/* --- Attractive Loading Bar & Counter --- */}
           <g transform="translate(0, 80)">
-            <text className="loader-label">Please wait to get PRIME experience</text>
-             <rect x="-125" y="0" width="250" height="1.5" fill="#e2e8f0" rx="1" />
-             <rect ref={progressBarRef} x="-125" y="0" width="250" height="1.5" fill="#4f46e5" rx="1" />
-             <text className="loader-counter" ref={counterRef} y="-8" textAnchor="middle" fill="#4f46e5" fontSize="14" fontWeight="bold">
-                0%
-             </text>
+            <rect x="-125" y="0" width="250" height="1.5" fill="#e2e8f0" rx="1" />
+            <rect ref={progressBarRef} x="-125" y="0" width="250" height="1.5" fill="#4f46e5" rx="1" />
+            <text className="loader-counter" ref={counterRef} y="-8" textAnchor="middle" fill="#4f46e5" fontSize="14" fontWeight="bold">
+              0%
+            </text>
+            <text className="loader-label" y="20">Please wait to get PRIME experience</text>
           </g>
         </svg>
       </div>

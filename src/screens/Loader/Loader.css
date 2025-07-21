@@ -44,13 +44,13 @@
 }
 .loader-counter {
   font-family: 'normalized', sans-serif;
-  font-size: 8px;
+  font-size: 0.5rem;  /* Restored original size */
   font-weight: bold;
   fill: #4f46e5;
 }
 
 .loader-label {
-  font-size: 6px;
+  font-size: 0.3rem;  /* Restored original size */
   font-weight: 500;
   fill: #4f46e5;
   font-family: 'normalized', sans-serif;
@@ -72,3 +72,17 @@
 .highlight {
     font-style: italic;
   }
+
+/* Mobile-only responsive styles */
+@media screen and (max-width: 480px) {
+  .loader-counter {
+    font-size: 1.5rem;
+  }
+  .loader-label {
+    font-size: 1.2rem;
+    transform: translateY(25px) !important;  /* Changed from -25px to 25px */
+  }
+  .prime-text {
+    font-size: 150px !important;
+  }
+}
