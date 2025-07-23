@@ -1,35 +1,44 @@
-import React, { useRef } from "react";
-import { Outlet } from "react-router-dom";
+import React, { useRef, useState, useEffect } from "react";
+import { NavLink, Outlet } from "react-router-dom";
+import "./Layout.css";
 
 const Layout = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navref = useRef();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Add useEffect for scroll reset
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleNavClick = () => {
+    window.scrollTo(0, 0);
+    toggleMenu();
+  };
 
   return (
     <>
-      <div
-        className="hammenu"
-        style={{
-          fontSize: "2rem",
-          padding: "1rem 2rem",
-          margin: "0.4rem",
-          display: "none",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#000",
-          width: "3rem",
-        }}
-      >
-        <i style={{ color: "#fff" }} className="ri-menu-2-line"></i>
+      <div className="hammenu" onClick={toggleMenu}>
+        <i className={`ri-menu-${isMenuOpen ? '3' : '2'}-line`} style={{ color: "#fff" }}></i>
       </div>
-      <nav ref={navref}>
-        <div className="left">
-          <h2>Shop</h2>
-          <h2>Where to buy</h2>
-        </div>
-        <div className="middle">PRIME</div>
-        <div className="right">
-          <h2>About Prime</h2>
-          <h2>Buy Prime</h2>
+
+      <nav ref={navref} className={isMenuOpen ? "nav-active" : ""}>
+        <div className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
+          <div className="left">
+            <NavLink to="/products" onClick={handleNavClick}>Shop</NavLink>
+            <NavLink target="_blank" to="https://www.amazon.com/stores/page/DADD59A5-1DF2-49CC-997F-8A585A126AA8?ingress=2&visitId=1338204f-e6fa-49cf-a9a5-512a74962188&store_ref=bl_ast_dp_brandLogo_sto&ref_=ast_bln" onClick={toggleMenu}>Buy Prime</NavLink>
+
+          </div>
+          <div className="middle">PRIME</div>
+          <div className="right">
+            <NavLink to="/about-prime" onClick={toggleMenu}>About Prime</NavLink>
+            <NavLink to="/where-to-buy" onClick={handleNavClick}>Cart <i style={{color: "#fff"}} className="ri-shopping-cart-line"></i></NavLink>
+
+          </div>
         </div>
       </nav>
 

@@ -1,7 +1,7 @@
 // LazyCanvas.js
 import React, { useRef, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import "./LazyCanvas.css"; // <- Import your spinner styles
+import "./LazyCanvas.css";
 
 const LazyCanvas = ({ children, height = "300px" }) => {
   const ref = useRef();
@@ -11,36 +11,50 @@ const LazyCanvas = ({ children, height = "300px" }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting || entry.boundingClientRect.top < 500) {
           setInView(true);
+          observer.disconnect();
         }
       },
       {
-        rootMargin: "100px",
-        threshold: 0.1,
+        rootMargin: "500px",
+        threshold: 0,
       }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
 
-    const timeout = setTimeout(() => {
-      window.dispatchEvent(new Event("scroll"));
-    }, 50000);
-
-    return () => {
-      observer.disconnect();
-      clearTimeout(timeout);
-    };
+    return () => observer.disconnect();
   }, []);
 
+  const handleCreated = () => {
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+  };
+
   return (
-    <div ref={ref} style={{ minHeight: height, position: "relative" }}>
-      {!isLoaded && inView && <div className="spinner"></div>}
+    <div
+      ref={ref}
+      style={{
+        minHeight: height,
+        position: "relative",
+        opacity: isLoaded ? 1 : 0.3,
+        transition: "opacity 0.3s ease-in-out",
+      }}
+    >
+      <div className={`loader ${inView && isLoaded ? 'hidden' : ''}`}>
+        <div className="spinner"></div>
+        <p>Loading product...</p>
+      </div>
+      
       {inView && (
         <Canvas
           camera={{ position: [0, 0, 2] }}
           gl={{ toneMappingExposure: 0.6 }}
-          onCreated={() => setIsLoaded(true)}
+          onCreated={handleCreated}
         >
           {children}
         </Canvas>

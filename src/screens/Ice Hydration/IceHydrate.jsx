@@ -1,10 +1,20 @@
 import React from "react";
 import "./iceHydrate.css";
 import { banner, img1, img2, img3 } from "./Imgs";
+import { NavLink } from "react-router-dom";
 
 const IceHydrate = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="ice-hydrate-container">
+      <NavLink to={-1} className="backArrow">
+        <div>
+          <i class="ri-arrow-left-line"></i>
+        </div>
+      </NavLink>
+
       <div className="banner">
         <img src={banner} alt="" />
       </div>

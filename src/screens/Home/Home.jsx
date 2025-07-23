@@ -9,13 +9,15 @@ import ModelViewer from "../../components/ModelViewer";
 import "remixicon/fonts/remixicon.css";
 import LazyCanvas from "../../components/LazyCanvas";
 import Lenis from "@studio-freight/lenis";
+import { NavLink, useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
-  const homeContentRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
+  const homeContentRef = useRef(null);
   const navref = useRef();
   const page1Ref = useRef();
   const page2Ref = useRef();
@@ -32,13 +34,16 @@ const Home = () => {
       handleLoaderFinish();
     }
   }, [loading]);
-
   useEffect(() => {
     const lenis = new Lenis({
       smooth: true,
-      duration: 4,
+      duration: 2.5, // Reduced from 4 for smoother feel
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothTouch: true,
+      touchMultiplier: 2, // Added for better touch response
+      wheelMultiplier: 1.2, // Added for smoother wheel scrolling
+      syncTouch: true, // Added to sync touch movements
+      infinite: false,
     });
 
     const animate = (time) => {
@@ -51,6 +56,10 @@ const Home = () => {
     return () => {
       lenis.destroy();
     };
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   const handleLoaderFinish = () => {
@@ -71,7 +80,8 @@ const Home = () => {
       }
     );
 
-    const navItems = navref.current.querySelectorAll("nav div h2, .middle");
+    const navItems =
+      navref.current?.querySelectorAll("nav div h2, .middle") || [];
 
     tl.fromTo(
       navItems,
@@ -97,7 +107,6 @@ const Home = () => {
     });
 
     const spans = el.querySelectorAll("span");
-    console.log(spans);
 
     tl.fromTo(
       spans,
@@ -240,18 +249,18 @@ const Home = () => {
   const view2Animation = (tl) => {
     const h5head = view2Ref.current.querySelector("h5");
     tl.to(h5head, {
-      transform: "translate(-75rem, 90rem) rotate(-30deg)",
+      transform: "translate(-150rem) rotate(0deg)",
       opacity: 1,
-      ease: "power2.inOut",
+      ease: "power1.inOut", // Changed to smoother easing
       scrollTrigger: {
         trigger: view2Ref.current,
         start: "top bottom",
-        end: "+=2000", // Increased scroll distance even more
+        end: "+=800", // Increased scroll distance significantly
         scrub: {
           trigger: true,
-          smooth: 3.5, // Increased smoothing
-          ease: "power2.inOut",
-          duration: 2, // Added duration
+          smooth: 5, // Increased smoothing
+          ease: "linear",
+          duration: 3, // Increased duration
         },
       },
     });
@@ -278,22 +287,24 @@ const Home = () => {
         <Loader onFinished={handleLoaderFinish} />
       ) : (
         <div ref={homeContentRef} className="home-content">
-          <div
-            className="hammenu"
-            style={{
-              fontSize: "2rem",
-              padding: "1rem 2rem",
-              margin: "0.4rem",
-              display: "none",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#000",
-              width: "3rem",
-            }}
-          >
-            <i style={{ color: "#fff" }} className="ri-menu-2-line"></i>
-          </div>
-          
+          <nav ref={navref}>
+            <div className="left">
+              <NavLink to="/products">Shop</NavLink>
+              <NavLink
+                target="_blank"
+                to="https://www.amazon.com/stores/page/DADD59A5-1DF2-49CC-997F-8A585A126AA8?ingress=2&visitId=1338204f-e6fa-49cf-a9a5-512a74962188&store_ref=bl_ast_dp_brandLogo_sto&ref_=ast_bln"
+              >
+                Buy Prime
+              </NavLink>
+            </div>
+            <div className="middle">PRIME</div>
+            <div className="right">
+              <NavLink to="/about-prime">About Prime</NavLink>
+              <NavLink to="/login">Login</NavLink>
+            </div>
+          </nav>
+
+          <h1 id="prime">PRIME</h1>
 
           <section className="slide1" ref={slide1}>
             <h1 ref={slide1h1}>Refuel. Energy. Hydration.</h1>
@@ -316,7 +327,9 @@ const Home = () => {
               src="src\Assets\Home slide 1\bottle2.webp"
               alt=""
             />
-            <button ref={collectBtn}>Collect Now</button>
+            <NavLink to="/products" ref={collectBtn}>
+              Collect Now
+            </NavLink>
           </section>
 
           <div className="view1" ref={view1Ref}>
@@ -340,7 +353,7 @@ const Home = () => {
                     raspberry, and lemon-lime, offering a refreshing taste
                     perfect for summer.
                   </p>
-                  <button>BUY NOW</button>
+                  <button onClick={() => navigate('/products/hydration')}>BUY NOW</button>
                 </div>
               </div>
             </div>
@@ -368,7 +381,7 @@ const Home = () => {
                   ripe strawberries with the creamy goodness of bananas,
                   creating a delightful.
                 </p>
-                <button>BUY NOW</button>
+                <button onClick={() => navigate('/products/hydration')}>BUY NOW</button>
               </div>
             </div>
 
@@ -390,7 +403,7 @@ const Home = () => {
                   refreshment with the bold and tangy taste of cherries, perfect
                   for cooling down on hot days.
                 </p>
-                <button>BUY NOW</button>
+                <button onClick={() => navigate('/products/hydration')}>BUY NOW</button>
               </div>
             </div>
           </div>
@@ -402,12 +415,12 @@ const Home = () => {
               <div className="product product1">
                 <img src="src\Assets\view2\PRIME_hydration_white.webp" alt="" />
                 <h3>Prime Collector Series</h3>
-                <button>Know More</button>
+                <button onClick={() => navigate('/products/hydration')}>Know More</button>
               </div>
               <div className="product produc2">
                 <img src="src\Assets\view2\Sournova.webp" alt="" />
                 <h3>Sournova</h3>
-                <button>Know More</button>
+                <button onClick={() => navigate('/products/hydration')}>Know More</button>
               </div>
               <div className="product product3">
                 <img
@@ -415,7 +428,7 @@ const Home = () => {
                   alt=""
                 />
                 <h3>Peso Pluma</h3>
-                <button>Know More</button>
+                <button onClick={() => navigate('/products/hydration')}>Know More</button>
               </div>
               <div className="product product4">
                 <img
@@ -423,7 +436,7 @@ const Home = () => {
                   alt=""
                 />
                 <h3>Future Freeze</h3>
-                <button>Know More</button>
+                <button onClick={() => navigate('/products/hydration')}>Know More</button>
               </div>
               <div className="product product5">
                 <img
@@ -431,7 +444,7 @@ const Home = () => {
                   alt=""
                 />
                 <h3>Cherry Freeze</h3>
-                <button>Know More</button>
+                <button onClick={() => navigate('/products/hydration')}>Know More</button>
               </div>
             </article>
           </section>
@@ -479,7 +492,7 @@ const Home = () => {
                   <ModelViewer modelPath="src\Assets\View4\Drink1.glb" />
                 </LazyCanvas>
                 <h4>Cherry Limeade</h4>
-                <button>LEARN MORE</button>
+                <button onClick={() => navigate('/products/energy')}>LEARN MORE</button>
               </div>
 
               <div className="canvas-box">
@@ -494,7 +507,7 @@ const Home = () => {
                 </LazyCanvas>
 
                 <h4>Dripsicle</h4>
-                <button>LEARN MORE</button>
+                <button onClick={() => navigate('/products/energy')}>LEARN MORE</button>
               </div>
 
               <div className="canvas-box">
@@ -508,7 +521,7 @@ const Home = () => {
                   <ModelViewer modelPath="src\Assets\View4\Drink3.glb" />
                 </LazyCanvas>
                 <h4>Original</h4>
-                <button>LEARN MORE</button>
+                <button onClick={() => navigate('/products/energy')}>LEARN MORE</button>
               </div>
             </div>
           </section>
@@ -542,7 +555,93 @@ const Home = () => {
                 alt=""
               />
             </div>
-          </div>         
+          </div>
+
+          <footer>
+            <div className="top">
+              <div className="box1">
+                <h2>About Prime</h2>
+                <p>
+                  PRIME was developed to fill the void where great taste meets
+                  function. With bold, thirst-quenching flavors to help you
+                  refresh, replenish, and refuel, PRIME is the perfect boost for
+                  any endeavor. We're confident you'll love it as much as we do.
+                </p>
+                <div className="icons">
+                  <a
+                    target="_blank"
+                    href="https://www.facebook.com/people/DrinkPrime/100076456194119/"
+                  >
+                    <i className="ri-facebook-circle-fill"></i>
+                  </a>
+                  <a
+                    target="_blank"
+                    href="https://www.instagram.com/drinkprime/"
+                  >
+                    <i className="ri-instagram-line"></i>
+                  </a>
+                  <a target="_blank" href="https://www.tiktok.com/@drinkprime">
+                    <i className="ri-tiktok-fill"></i>
+                  </a>
+                  <a target="_blank" href="https://twitter.com/primehydrate">
+                    <i className="ri-twitter-x-line"></i>
+                  </a>
+                </div>
+              </div>
+              <div className="box2">
+                <NavLink to="/products/rapid-hydration">
+                  RAPID HYDRATION
+                </NavLink>
+                <NavLink to="/products/ice-hydration">ICE HYDRATION</NavLink>
+                <NavLink to="/products/hydration">HYDRATION</NavLink>
+                <NavLink to="/products/hydration-sticks">
+                  HYDRATION + STICKS
+                </NavLink>
+                <NavLink to="/products/energy">ENERGY</NavLink>
+              </div>
+              <div className="box3">
+                <NavLink to="">ABOUT PRIME</NavLink>
+                <NavLink to="">TEAM + ATHLETES</NavLink>
+                <NavLink to="">CREATORS</NavLink>
+                <NavLink to="">ARTISTS</NavLink>
+                <NavLink to="">AMBASSADORS</NavLink>
+              </div>
+              <div className="box4">
+                <NavLink to="">FAQS</NavLink>
+                <NavLink to="">PRIVACY POLICY</NavLink>
+                <NavLink to="">RETURN POLICY</NavLink>
+                <NavLink to="">WHERE TO BUY</NavLink>
+                <NavLink to="">CONTACT US</NavLink>
+              </div>
+            </div>
+            <div className="bottom">
+              <h3>NEWSLETTER</h3>
+              <p className="subTxt">
+                Subscribe to receive updates, access to exclusive deals, and
+                more.
+              </p>
+              <input type="text" placeholder="Enter your email" />
+              <p id="detail">
+                By subscribing, you consent to receive marketing communications
+                from PRIME using the provided email address and phone number.
+                Consent to receive marketing is not required for purchase.
+                Standard data and messaging rates may apply. You can opt-out at
+                any time by contacting us or using the unsubscribe link. See our
+                Privacy Policy for details.
+              </p>
+              <button>SUBSCRIBE</button>
+            </div>
+            <div className="user-stuff">
+              <h6>&copy; Prime Hydration LLC</h6>
+              <div className="links">
+                <a href="">Cookie Choice</a>
+                <a href="">Privacy Policy</a>
+                <a href="">Terms of Use</a>
+                <a href="">Accessibility Statement</a>
+                <a href="">Contact</a>
+              </div>
+            </div>
+          </footer>
         </div>
       )}
     </>
