@@ -9,7 +9,7 @@ import ModelViewer from "../../components/ModelViewer";
 import "remixicon/fonts/remixicon.css";
 import LazyCanvas from "../../components/LazyCanvas";
 import Lenis from "@studio-freight/lenis";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -516,22 +516,8 @@ const Home = () => {
         <Loader onFinished={handleLoaderFinish} />
       ) : (
         <div ref={homeContentRef} className="home-content">
-          {/* <nav ref={navref}>
-            <div className="left">
-              <a href="/products">Shop</a>
-              <a
-                target="_blank"
-                href="https://www.amazon.com/stores/page/DADD59A5-1DF2-49CC-997F-8A585A126AA8?ingress=2&visitId=1338204f-e6fa-49cf-a9a5-512a74962188&store_ref=bl_ast_dp_brandLogo_sto&ref_=ast_bln"
-              >
-                Buy Prime
-              </a>
-            </div>
-            <div className="middle">PRIME</div>
-            <div className="right">
-              <a href="/about-prime">About Prime</a>
-              <a href="/login">Login</a>
-            </div>
-          </nav> */}
+          <div className="loginlink"></div>
+
 
           <h1 id="prime">PRIME</h1>
 
@@ -548,7 +534,7 @@ const Home = () => {
             />
 
             <img className="img3" src="/Home slide 1/bottle2.webp" alt="" />
-            <a href="/products" ref={collectBtn}>
+            <a href={`${import.meta.env.VITE_HOST}/products`} ref={collectBtn}>
               Collect Now
             </a>
           </section>
@@ -566,7 +552,7 @@ const Home = () => {
                     raspberry, and lemon-lime, offering a refreshing taste
                     perfect for summer.
                   </p>
-                  <a href="/products/hydration">BUY NOW</a>
+                  <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>BUY NOW</a>
                 </div>
               </div>
             </div>
@@ -590,7 +576,7 @@ const Home = () => {
                   ripe strawberries with the creamy goodness of bananas,
                   creating a delightful.
                 </p>
-                <a href="/products/hydration">BUY NOW</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>BUY NOW</a>
               </div>
             </div>
 
@@ -612,7 +598,7 @@ const Home = () => {
                   refreshment with the bold and tangy taste of cherries, perfect
                   for cooling down on hot days.
                 </p>
-                <a href="products/hydration">BUY NOW</a>
+                <a href={`${import.meta.env.VITE_HOST}products/hydration`}>BUY NOW</a>
               </div>
             </div>
           </div>
@@ -624,27 +610,27 @@ const Home = () => {
               <div className="product product1">
                 <img src="/view2/PRIME_hydration_white.webp" alt="" />
                 <h3>Prime Collector Series</h3>
-                <a href="/products/hydration">Know More</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
               </div>
               <div className="product produc2">
                 <img src="/view2/Sournova.webp" alt="" />
                 <h3>Sournova</h3>
-                <a href="/products/hydration">Know More</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
               </div>
               <div className="product product3">
                 <img src="/view2/Prime_hydration_PesoPluma.webp" alt="" />
                 <h3>Peso Pluma</h3>
-                <a href="/products/hydration">Know More</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
               </div>
               <div className="product product4">
                 <img src="/view2/PrimeHydration_FutureFreeze.webp" alt="" />
                 <h3>Future Freeze</h3>
-                <a href="/products/hydration">Know More</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
               </div>
               <div className="product product5">
                 <img src="/view2/Prime_hydration_CherryFreeze.webp" alt="" />
                 <h3>Cherry Freeze</h3>
-                <a href="/products/hydration">Know More</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
               </div>
             </article>
           </section>
@@ -675,7 +661,7 @@ const Home = () => {
                 />
               </div>
             </div>
-            <a href="/products/rapid-hydration">VIEW MORE</a>
+            <a href={`${import.meta.env.VITE_HOST}/products/rapid-hydration`}>VIEW MORE</a>
           </section>
 
           <section className="view4" ref={view4Ref}>
@@ -693,7 +679,7 @@ const Home = () => {
                   <ModelViewer modelPath="/View4/Drink1.glb" />
                 </LazyCanvas>
                 <h4>Cherry Limeade</h4>
-                <a href="/products/energy">view More</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/energy`}>view More</a>
               </div>
 
               <div className="canvas-box">
@@ -708,7 +694,7 @@ const Home = () => {
                 </LazyCanvas>
 
                 <h4>Dripsicle</h4>
-                <a href="/products/energy">view More</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/energy`}>view More</a>
               </div>
 
               <div className="canvas-box">
@@ -722,7 +708,7 @@ const Home = () => {
                   <ModelViewer modelPath="/View4/Drink3.glb" />
                 </LazyCanvas>
                 <h4>Original</h4>
-                <a href="/products/energy">view More</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/energy`}>view More</a>
               </div>
             </div>
           </section>
@@ -776,11 +762,12 @@ const Home = () => {
                 </div>
               </div>
               <div className="box2">
-                <a href="/products/rapid-hydration">RAPID HYDRATION</a>
-                <a href="/products/ice-hydration">ICE HYDRATOIN</a>
-                <a href="/products/hydration">HYDRATON</a>
-                <a href="/products/sticks">HYDRATION + STICKS</a>
-                <a href="/products/energy">ENERGY</a>
+                <NavLink to="/login">LOGIN</NavLink>
+                <a href={`${import.meta.env.VITE_HOST}/products/rapid-hydration`}>RAPID HYDRATION</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/ice-hydration`}>ICE HYDRATOIN</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>HYDRATON</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/sticks`}>HYDRATION + STICKS</a>
+                <a href={`${import.meta.env.VITE_HOST}/products/energy`}>ENERGY</a>
               </div>
             </div>
             <div className="bottom">
@@ -803,11 +790,11 @@ const Home = () => {
             <div className="user-stuff">
               <h6>&copy; Prime Hydration LLC</h6>
               <div className="links">
-                <a href="">Cookie Choice</a>
-                <a href="">Privacy Policy</a>
-                <a href="">Terms of Use</a>
-                <a href="">Accessibility Statement</a>
-                <a href="">Contact</a>
+                <a href={`${import.meta.env.VITE_HOST}`}>Cookie Choice</a>
+                <a href={`${import.meta.env.VITE_HOST}`}>Privacy Policy</a>
+                <a href={`${import.meta.env.VITE_HOST}`}>Terms of Use</a>
+                <a href={`${import.meta.env.VITE_HOST}`}>Accessibility Statement</a>
+                <a href={`${import.meta.env.VITE_HOST}`}>Contact</a>
               </div>
             </div>
           </div>
