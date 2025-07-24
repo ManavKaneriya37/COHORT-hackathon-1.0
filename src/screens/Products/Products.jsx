@@ -100,7 +100,7 @@ const Products = () => {
             antioxidants, it's hydration that works as hard as you do – and
             tastes like summer in a bottle.
           </p>
-          <a href="/products/ice-hydration">
+          <a href={`${import.meta.env.VITE_HOST}/products/ice-hydration`}>
             VIEW <i className="ri-arrow-right-line"></i>
           </a>
         </div>
@@ -123,7 +123,7 @@ const Products = () => {
             boost your body craves — whether you’re in the gym, on the field, or
             on the go. Hydrate like a pro. Stay PRIME.
           </p>
-          <a href="/products/hydration">
+          <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>
             VIEW <i className="ri-arrow-right-line"></i>
           </a>
         </div>
@@ -144,7 +144,7 @@ const Products = () => {
             smarter, cleaner way to rehydrate — anytime, anywhere. When seconds
             matter, stay sharp. Stay Rapid. Stay PRIME.
           </p>
-          <a href="/products/rapid-hydration">
+          <a href={`${import.meta.env.VITE_HOST}/products/rapid-hydration`}>
             VIEW <i className="ri-arrow-right-line"></i>
           </a>
         </div>
@@ -166,7 +166,7 @@ const Products = () => {
             and gaming to long days and late nights. No jitters. No compromises.
             Just pure, elevated energy. Level up with PRIME.
           </p>
-          <a href="/products/energy">
+          <a href={`${import.meta.env.VITE_HOST}/products/energy`}>
             VIEW <i className="ri-arrow-right-line"></i>
           </a>
         </div>
@@ -189,7 +189,7 @@ const Products = () => {
             Hydration Sticks are proof that big performance can come in small
             packages.
           </p>
-          <a href="/products/sticks">
+          <a href={`${import.meta.env.VITE_HOST}/products/sticks`}>
             VIEW <i className="ri-arrow-right-line"></i>
           </a>
         </div>

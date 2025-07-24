@@ -11,7 +11,7 @@ const About = () => {
         </div>
       </NavLink>
       <h1>ABOUT</h1>
-      <img src="src\Assets\About\logan-paul-ksi-drinks-red-bg.jpg" alt="" />
+      <img src="/About/logan-paul-ksi-drinks-red-bg.jpg" alt="" />
       <p>
         We created PRIME to showcase what happens when rivals come together as
         brothers and business partners to fill the void where great taste meets
