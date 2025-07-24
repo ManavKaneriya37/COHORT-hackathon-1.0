@@ -92,7 +92,7 @@ const Login = () => {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="forgot-password-link">
+                <a href={`${import.meta.env.VITE_HOST}`} className="forgot-password-link">
                   Forgot password?
                 </a>
               </div>
@@ -110,7 +110,7 @@ const Login = () => {
           <div className="signup-section">
             <p className="signup-text">
               Don't have an account?
-              <a href="/signup" className="signup-link">
+              <a href={`${import.meta.env.VITE_HOST}/signup`} className="signup-link">
                 <UserPlus className="icon-style-button" />
                 Sign Up Now
               </a>

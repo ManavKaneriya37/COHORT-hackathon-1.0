@@ -100,9 +100,9 @@ const Products = () => {
             antioxidants, it's hydration that works as hard as you do – and
             tastes like summer in a bottle.
           </p>
-          <a href={`${import.meta.env.VITE_HOST}/products/ice-hydration`}>
+          <NavLink to={`/products/ice-hydration`}>
             VIEW <i className="ri-arrow-right-line"></i>
-          </a>
+          </NavLink>
         </div>
         <img src={icebanner} alt="" />
       </div>
@@ -123,9 +123,9 @@ const Products = () => {
             boost your body craves — whether you’re in the gym, on the field, or
             on the go. Hydrate like a pro. Stay PRIME.
           </p>
-          <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>
+          <NavLink to={`/products/hydration`}>
             VIEW <i className="ri-arrow-right-line"></i>
-          </a>
+          </NavLink>
         </div>
       </div>
 
@@ -144,9 +144,9 @@ const Products = () => {
             smarter, cleaner way to rehydrate — anytime, anywhere. When seconds
             matter, stay sharp. Stay Rapid. Stay PRIME.
           </p>
-          <a href={`${import.meta.env.VITE_HOST}/products/rapid-hydration`}>
+          <NavLink to={`/products/rapid-hydration`}>
             VIEW <i className="ri-arrow-right-line"></i>
-          </a>
+          </NavLink>
         </div>
         <img src={rapidhydrationbanner} alt="" />
       </div>
@@ -166,9 +166,9 @@ const Products = () => {
             and gaming to long days and late nights. No jitters. No compromises.
             Just pure, elevated energy. Level up with PRIME.
           </p>
-          <a href={`${import.meta.env.VITE_HOST}/products/energy`}>
+          <NavLink to={`/products/energy`}>
             VIEW <i className="ri-arrow-right-line"></i>
-          </a>
+          </NavLink>
         </div>
       </div>
 
@@ -189,9 +189,9 @@ const Products = () => {
             Hydration Sticks are proof that big performance can come in small
             packages.
           </p>
-          <a href={`${import.meta.env.VITE_HOST}/products/sticks`}>
+          <NavLink to={`/products/sticks`}>
             VIEW <i className="ri-arrow-right-line"></i>
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>

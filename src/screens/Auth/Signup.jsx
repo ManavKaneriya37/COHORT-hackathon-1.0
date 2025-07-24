@@ -102,7 +102,7 @@ const Signup = () => {
 
             <div>
               <button type="submit" className="signup-button">
-                <a href="#" className="login-link">
+                <a href={`${import.meta.env.VITE_HOST}`} className="login-link">
                   <i class="ri-user-add-fill icon-style-button"></i>
                   Sign Up Now
                 </a>
@@ -113,7 +113,7 @@ const Signup = () => {
           <div className="login-redirect">
             <p className="login-text">
               Already have an account?
-              <a href="/login" className="login-link">
+              <a href={`${import.meta.env.VITE_HOST}/login`} className="login-link">
                 <LogIn className="icon-style-button" />
                 Log In
               </a>
