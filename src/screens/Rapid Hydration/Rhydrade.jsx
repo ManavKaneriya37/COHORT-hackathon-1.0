@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart, getCartTotal } from "../../features/itemSlice.js";
 
 const Rhydrade = () => {
-
   const dispatch = useDispatch();
   dispatch(getCartTotal());
 
@@ -26,7 +25,10 @@ const Rhydrade = () => {
           <img src={p1} alt="Rapid Rehydration Product" />
           <h2>Ocean Cherry</h2>
           <button
-            onClick={() =>
+            onClick={() => {
+              toast.success("Item added to cart!", {
+                autoClose: 2000,
+              });
               dispatch(
                 addToCart({
                   id: 19,
@@ -35,8 +37,8 @@ const Rhydrade = () => {
                   price: 2.99,
                   qty: 1,
                 })
-              )
-            }
+              );
+            }}
           >
             ADD TO CART
           </button>

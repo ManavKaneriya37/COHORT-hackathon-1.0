@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart, getCartTotal } from "../../features/itemSlice";
 
 const Energy = () => {
-
   const dispatch = useDispatch();
   dispatch(getCartTotal());
 
@@ -35,7 +34,10 @@ const Energy = () => {
           <img src={e1} alt="Energy Drink 1" />
           <h2>ORIGINAL</h2>
           <button
-            onClick={() =>
+            onClick={() => {
+              toast.success("Item added to cart!", {
+                autoClose: 2000,
+              });
               dispatch(
                 addToCart({
                   id: 22,
@@ -44,8 +46,8 @@ const Energy = () => {
                   price: 2.99,
                   qty: 1,
                 })
-              )
-            }
+              );
+            }}
           >
             ADD TO CART
           </button>
@@ -54,7 +56,10 @@ const Energy = () => {
           <img src={e2} alt="Energy Drink 2" />
           <h2>DRIPSICLE</h2>
           <button
-            onClick={() =>
+            onClick={() => {
+              toast.success("Item added to cart!", {
+                autoClose: 2000,
+              });
               dispatch(
                 addToCart({
                   id: 23,
@@ -63,8 +68,8 @@ const Energy = () => {
                   price: 2.99,
                   qty: 1,
                 })
-              )
-            }
+              );
+            }}
           >
             ADD TO CART
           </button>
@@ -73,7 +78,10 @@ const Energy = () => {
           <img src={e3} alt="Energy Drink 3" />
           <h2>CHERRY LIMEADE</h2>
           <button
-            onClick={() =>
+            onClick={() => {
+              toast.success("Item added to cart!", {
+                autoClose: 2000,
+              });
               dispatch(
                 addToCart({
                   id: 24,
@@ -82,8 +90,8 @@ const Energy = () => {
                   price: 2.99,
                   qty: 1,
                 })
-              )
-            }
+              );
+            }}
           >
             ADD TO CART
           </button>
@@ -92,7 +100,10 @@ const Energy = () => {
           <img src={e4} alt="Energy Drink 4" />
           <h2>DREAM POP</h2>
           <button
-            onClick={() =>
+            onClick={() => {
+              toast.success("Item added to cart!", {
+                autoClose: 2000,
+              });
               dispatch(
                 addToCart({
                   id: 25,
@@ -101,8 +112,8 @@ const Energy = () => {
                   price: 2.99,
                   qty: 1,
                 })
-              )
-            }
+              );
+            }}
           >
             ADD TO CART
           </button>

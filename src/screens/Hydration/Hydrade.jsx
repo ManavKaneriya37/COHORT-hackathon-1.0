@@ -35,7 +35,10 @@ const Hydrade = () => {
             <img src={product.img} alt={product.title} />
             <h2>{product.title}</h2>
             <button
-              onClick={() =>
+              onClick={() => {
+                toast.success("Item added to cart!", {
+                  autoClose: 2000,
+                });
                 dispatch(
                   addToCart({
                     id: product.id,
@@ -44,8 +47,8 @@ const Hydrade = () => {
                     price: product.price,
                     qty: 1,
                   })
-                )
-              }
+                );
+              }}
             >
               ADD TO CART
             </button>
