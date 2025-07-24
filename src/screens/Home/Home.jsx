@@ -3,12 +3,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "../Loader/Loader";
 import "./Home.css";
+import "../../components/Layout.css";
 import "./responsive.css";
 import ModelViewer from "../../components/ModelViewer";
 import "remixicon/fonts/remixicon.css";
 import LazyCanvas from "../../components/LazyCanvas";
 import Lenis from "@studio-freight/lenis";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +51,7 @@ const Home = () => {
 
     function raf(time) {
       lenis.raf(time);
-      ScrollTrigger.update()
+      ScrollTrigger.update();
       requestAnimationFrame(raf);
     }
 
@@ -69,19 +70,6 @@ const Home = () => {
     setLoading(false);
 
     const tl = gsap.timeline();
-
-    // Home entry animation
-    tl.fromTo(
-      homeContentRef.current,
-      { opacity: 0, y: 30, scale: 0.98 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        ease: "power2.out",
-      }
-    );
 
     const navItems =
       navref.current?.querySelectorAll("nav div h2, .middle") || [];
@@ -191,8 +179,8 @@ const Home = () => {
         scrollTrigger: {
           trigger: page1Ref.current,
           once: true,
-          start: "top 80%", 
-          end: "bottom bottom"
+          start: "top 80%",
+          end: "bottom bottom",
         },
       }
     );
@@ -416,58 +404,58 @@ const Home = () => {
     );
 
     // In useEffect where other ScrollTriggers are
-    const footerTopBoxes = footerRef.current.querySelectorAll(".top > div"); // Assuming you add a ref to the footer
-    const footerBottom = footerRef.current.querySelector(".bottom");
-    const footerUserStuff = footerRef.current.querySelector(".user-stuff");
+    // const footerTopBoxes = footerRef.current.querySelectorAll(".top > div"); // Assuming you add a ref to the footer
+    // const footerBottom = footerRef.current.querySelector(".bottom");
+    // const footerUserStuff = footerRef.current.querySelector(".user-stuff");
 
-    gsap.fromTo(
-      footerTopBoxes,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 95%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    // gsap.fromTo(
+    //   footerTopBoxes,
+    //   { opacity: 0, y: 50 },
+    //   {
+    //     opacity: 1,
+    //     y: 0,
+    //     duration: 0.8,
+    //     stagger: 0.1,
+    //     ease: "power2.out",
+    //     scrollTrigger: {
+    //       trigger: footerRef.current,
+    //       start: "top 95%",
+    //       toggleActions: "play none none none",
+    //     },
+    //   }
+    // );
 
-    gsap.fromTo(
-      footerBottom,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: footerBottom,
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    // gsap.fromTo(
+    //   footerBottom,
+    //   { opacity: 0, y: 50 },
+    //   {
+    //     opacity: 1,
+    //     y: 0,
+    //     duration: 2,
+    //     ease: "power2.out",
+    //     scrollTrigger: {
+    //       trigger: footerBottom,
+    //       start: "top 90%",
+    //       toggleActions: "play none none none",
+    //     },
+    //   }
+    // );
 
-    gsap.fromTo(
-      footerUserStuff,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power1.out",
-        scrollTrigger: {
-          trigger: footerUserStuff,
-          start: "top 95%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    // gsap.fromTo(
+    //   footerUserStuff,
+    //   { opacity: 0, y: 30 },
+    //   {
+    //     opacity: 1,
+    //     y: 0,
+    //     duration: 1,
+    //     ease: "power1.out",
+    //     scrollTrigger: {
+    //       trigger: footerUserStuff,
+    //       start: "top 95%",
+    //       toggleActions: "play none none none",
+    //     },
+    //   }
+    // );
 
     view2Animation(tl);
   };
@@ -528,7 +516,7 @@ const Home = () => {
         <Loader onFinished={handleLoaderFinish} />
       ) : (
         <div ref={homeContentRef} className="home-content">
-          <nav ref={navref}>
+          {/* <nav ref={navref}>
             <div className="left">
               <a href="/products">Shop</a>
               <a
@@ -543,18 +531,14 @@ const Home = () => {
               <a href="/about-prime">About Prime</a>
               <a href="/login">Login</a>
             </div>
-          </nav>
+          </nav> */}
 
           <h1 id="prime">PRIME</h1>
 
           <section className="slide1" ref={slide1}>
             <h1 ref={slide1h1}>Refuel. Energy. Hydration.</h1>
             <h5>THE ULTIMATE COLLECTORS TAKE HOME $1M USD*</h5>
-            <img
-              className="img1"
-              src="/Home slide 1/bottle1.webp"
-              alt=""
-            />
+            <img className="img1" src="/Home slide 1/bottle1.webp" alt="" />
 
             <img
               ref={bottleRef}
@@ -563,11 +547,7 @@ const Home = () => {
               alt=""
             />
 
-            <img
-              className="img3"
-              src="/Home slide 1/bottle2.webp"
-              alt=""
-            />
+            <img className="img3" src="/Home slide 1/bottle2.webp" alt="" />
             <a href="/products" ref={collectBtn}>
               Collect Now
             </a>
@@ -576,16 +556,8 @@ const Home = () => {
           <div className="view1" ref={view1Ref}>
             <div className="page page1" ref={page1Ref}>
               <div className="page1display">
-                <img
-                  src="/Page1/candy1.png"
-                  alt=""
-                  className="candy1"
-                />
-                <img
-                  src="/Page1/candy2.png"
-                  alt=""
-                  className="candy2"
-                />
+                <img src="/Page1/candy1.png" alt="" className="candy1" />
+                <img src="/Page1/candy2.png" alt="" className="candy2" />
                 <span></span>
                 <div className="content">
                   <h3>Ice Pop</h3>
@@ -594,20 +566,14 @@ const Home = () => {
                     raspberry, and lemon-lime, offering a refreshing taste
                     perfect for summer.
                   </p>
-                  <a href="/products/hydration">
-                    BUY NOW
-                  </a>
+                  <a href="/products/hydration">BUY NOW</a>
                 </div>
               </div>
             </div>
 
             <div className="page page2" ref={page2Ref}>
               <div className="page2display">
-                <img
-                  src="/page2/banana.png"
-                  alt=""
-                  className="obj1"
-                />
+                <img src="/page2/banana.png" alt="" className="obj1" />
                 <img
                   src="/page2/strawberry-isolated-white-background-close-up-removebg-preview 1.png"
                   alt=""
@@ -624,9 +590,7 @@ const Home = () => {
                   ripe strawberries with the creamy goodness of bananas,
                   creating a delightful.
                 </p>
-                <a href="/products/hydration">
-                  BUY NOW
-                </a>
+                <a href="/products/hydration">BUY NOW</a>
               </div>
             </div>
 
@@ -648,9 +612,7 @@ const Home = () => {
                   refreshment with the bold and tangy taste of cherries, perfect
                   for cooling down on hot days.
                 </p>
-                <a href="products/hydration">
-                  BUY NOW
-                </a>
+                <a href="products/hydration">BUY NOW</a>
               </div>
             </div>
           </div>
@@ -662,46 +624,27 @@ const Home = () => {
               <div className="product product1">
                 <img src="/view2/PRIME_hydration_white.webp" alt="" />
                 <h3>Prime Collector Series</h3>
-                <a href="/products/hydration">
-                  Know More
-                </a>
+                <a href="/products/hydration">Know More</a>
               </div>
               <div className="product produc2">
                 <img src="/view2/Sournova.webp" alt="" />
                 <h3>Sournova</h3>
-                <a href="/products/hydration">
-                  Know More
-                </a>
+                <a href="/products/hydration">Know More</a>
               </div>
               <div className="product product3">
-                <img
-                  src="/view2/Prime_hydration_PesoPluma.webp"
-                  alt=""
-                />
+                <img src="/view2/Prime_hydration_PesoPluma.webp" alt="" />
                 <h3>Peso Pluma</h3>
-                <a href="/products/hydration">
-                  Know More
-                </a>
+                <a href="/products/hydration">Know More</a>
               </div>
               <div className="product product4">
-                <img
-                  src="/view2/PrimeHydration_FutureFreeze.webp"
-                  alt=""
-                />
+                <img src="/view2/PrimeHydration_FutureFreeze.webp" alt="" />
                 <h3>Future Freeze</h3>
-                <a href="/products/hydration">
-                  Know More
-                </a>
+                <a href="/products/hydration">Know More</a>
               </div>
               <div className="product product5">
-                <img
-                  src="/view2/Prime_hydration_CherryFreeze.webp"
-                  alt=""
-                />
+                <img src="/view2/Prime_hydration_CherryFreeze.webp" alt="" />
                 <h3>Cherry Freeze</h3>
-                <a href="/products/hydration">
-                  Know More
-                </a>
+                <a href="/products/hydration">Know More</a>
               </div>
             </article>
           </section>
@@ -732,9 +675,7 @@ const Home = () => {
                 />
               </div>
             </div>
-            <a href="/products/rapid-hydration">
-              VIEW MORE
-            </a>
+            <a href="/products/rapid-hydration">VIEW MORE</a>
           </section>
 
           <section className="view4" ref={view4Ref}>
@@ -817,7 +758,7 @@ const Home = () => {
             </div>
           </div>
 
-          <footer ref={footerRef}>
+          <div className="foot" ref={footerRef}>
             <div className="top">
               <div className="box1">
                 <h2>About Prime</h2>
@@ -828,35 +769,17 @@ const Home = () => {
                   any endeavor. We're confident you'll love it as much as we do.
                 </p>
                 <div className="icons">
-                  <a
-                    target="_blank"
-                    href="https://www.facebook.com/people/DrinkPrime/100076456194119/"
-                  >
-                    <i className="ri-facebook-circle-fill"></i>
-                  </a>
-                  <a
-                    target="_blank"
-                    href="https://www.instagram.com/drinkprime/"
-                  >
-                    <i className="ri-instagram-line"></i>
-                  </a>
-                  <a target="_blank" href="https://www.tiktok.com/@drinkprime">
-                    <i className="ri-tiktok-fill"></i>
-                  </a>
-                  <a target="_blank" href="https://twitter.com/primehydrate">
-                    <i className="ri-twitter-x-line"></i>
-                  </a>
+                  <i className="ri-facebook-circle-fill"></i>
+                  <i className="ri-instagram-line"></i>
+                  <i className="ri-tiktok-fill"></i>
+                  <i className="ri-twitter-x-line"></i>
                 </div>
               </div>
               <div className="box2">
-                <a href="/products/rapid-hydration">
-                  RAPID HYDRATION
-                </a>
-                <a href="/products/ice-hydration">ICE HYDRATION</a>
-                <a href="/products/hydration">HYDRATION</a>
-                <a href="/products/sticks">
-                  HYDRATION + STICKS
-                </a>
+                <a href="/products/rapid-hydration">RAPID HYDRATION</a>
+                <a href="/products/ice-hydration">ICE HYDRATOIN</a>
+                <a href="/products/hydration">HYDRATON</a>
+                <a href="/products/sticks">HYDRATION + STICKS</a>
                 <a href="/products/energy">ENERGY</a>
               </div>
             </div>
@@ -887,7 +810,7 @@ const Home = () => {
                 <a href="">Contact</a>
               </div>
             </div>
-          </footer>
+          </div>
         </div>
       )}
     </>

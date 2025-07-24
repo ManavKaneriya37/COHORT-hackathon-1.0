@@ -13,6 +13,7 @@ const Layout = () => {
   const buyPrimeRef = useRef(null);
   const aboutPrimeRef = useRef(null);
   const cartRef = useRef(null);
+  var footerRef = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -235,64 +236,68 @@ const Layout = () => {
                 style={{ color: "#fff" }}
               ></i>
             </NavLink>
+            <NavLink to="/login" onClick={handleNavClick} ref={cartRef}>
+              Login
+            </NavLink>
           </div>
         </div>
       </nav>
 
       <Outlet />
 
-      <footer>
-        <div className="top">
-          <div className="box1">
-            <h2>About Prime</h2>
-            <p>
-              PRIME was developed to fill the void where great taste meets
-              function. With bold, thirst-quenching flavors to help you refresh,
-              replenish, and refuel, PRIME is the perfect boost for any
-              endeavor. We're confident you'll love it as much as we do.
-            </p>
-            <div className="icons">
-              <i className="ri-facebook-circle-fill"></i>
-              <i className="ri-instagram-line"></i>
-              <i className="ri-tiktok-fill"></i>
-              <i className="ri-twitter-x-line"></i>
+      
+        <footer ref={footerRef}>
+          <div className="top">
+            <div className="box1">
+              <h2>About Prime</h2>
+              <p>
+                PRIME was developed to fill the void where great taste meets
+                function. With bold, thirst-quenching flavors to help you
+                refresh, replenish, and refuel, PRIME is the perfect boost for
+                any endeavor. We're confident you'll love it as much as we do.
+              </p>
+              <div className="icons">
+                <i className="ri-facebook-circle-fill"></i>
+                <i className="ri-instagram-line"></i>
+                <i className="ri-tiktok-fill"></i>
+                <i className="ri-twitter-x-line"></i>
+              </div>
+            </div>
+            <div className="box2">
+              <a href="/products/rapid-hydration">RAPID HYDRATION</a>
+              <a href="/products/ice-hydration">ICE HYDRATOIN</a>
+              <a href="/products/hydration">HYDRATON</a>
+              <a href="/products/sticks">HYDRATION + STICKS</a>
+              <a href="/products/energy">ENERGY</a>
             </div>
           </div>
-          <div className="box2">
-            <a href="/products/rapid-hydration">RAPID HYDRATION</a>
-            <a href="/products/ice-hydration">ICE HYDRATOIN</a>
-            <a href="/products/hydration">HYDRATON</a>
-            <a href="/products/sticks">HYDRATION + STICKS</a>
-            <a href="/products/energy">ENERGY</a>
+          <div className="bottom">
+            <h3>NEWSLETTER</h3>
+            <p className="subTxt">
+              Subscribe to receive updates, access to exclusive deals, and more.
+            </p>
+            <input type="text" placeholder="Enter your email" />
+            <p id="detail">
+              By subscribing, you consent to receive marketing communications
+              from PRIME using the provided email address and phone number.
+              Consent to receive marketing is not required for purchase.
+              Standard data and messaging rates may apply. You can opt-out at
+              any time by contacting us or using the unsubscribe link. See our
+              Privacy Policy for details.
+            </p>
+            <button>SUBSCRIBE</button>
           </div>
-        </div>
-        <div className="bottom">
-          <h3>NEWSLETTER</h3>
-          <p className="subTxt">
-            Subscribe to receive updates, access to exclusive deals, and more.
-          </p>
-          <input type="text" placeholder="Enter your email" />
-          <p id="detail">
-            By subscribing, you consent to receive marketing communications from
-            PRIME using the provided email address and phone number. Consent to
-            receive marketing is not required for purchase. Standard data and
-            messaging rates may apply. You can opt-out at any time by contacting
-            us or using the unsubscribe link. See our Privacy Policy for
-            details.
-          </p>
-          <button>SUBSCRIBE</button>
-        </div>
-        <div className="user-stuff">
-          <h6>&copy; Prime Hydration LLC</h6>
-          <div className="links">
-            <a href="">Cookie Choice</a>
-            <a href="">Privacy Policy</a>
-            <a href="">Terms of Use</a>
-            <a href="">Accessibility Statement</a>
-            <a href="">Contact</a>
+          <div className="user-stuff">
+            <h6>&copy; Prime Hydration LLC</h6>
+            <div className="links">
+              <a href="">Cookie Choice</a>
+              <a href="">Privacy Policy</a>
+              <a href="">Terms of Use</a>
+              <a href="">Accessibility Statement</a>
+              <a href="">Contact</a>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
     </>
   );
 };
