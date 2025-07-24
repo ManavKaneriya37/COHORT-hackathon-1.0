@@ -1,5 +1,5 @@
 import React from "react";
-import "./Sticks.css";
+import "./sticks.css";
 import { banner } from "./imgs.js";
 import { products } from "./sticks.js";
 import { NavLink } from "react-router-dom";
