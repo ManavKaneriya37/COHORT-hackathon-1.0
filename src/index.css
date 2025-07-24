@@ -1,5 +1,7 @@
 @import "tailwindcss";
-
+*{
+  user-select: none;
+}
 html, body {
   overflow: auto; /* ✅ Required for scrollTo to work */
 }

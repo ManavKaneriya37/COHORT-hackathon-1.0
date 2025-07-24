@@ -259,11 +259,11 @@ const Layout = () => {
             </div>
           </div>
           <div className="box2">
-            <a href="">RAPID HYDRATION</a>
-            <a href="">ICE HYDRATOIN</a>
-            <a href="">HYDRATON</a>
-            <a href="">HYDRATION + STICKS</a>
-            <a href="">ENERGY</a>
+            <a href="/products/rapid-hydration">RAPID HYDRATION</a>
+            <a href="/products/ice-hydration">ICE HYDRATOIN</a>
+            <a href="/products/hydration">HYDRATON</a>
+            <a href="/products/sticks">HYDRATION + STICKS</a>
+            <a href="/products/energy">ENERGY</a>
           </div>
         </div>
         <div className="bottom">

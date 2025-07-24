@@ -11,7 +11,7 @@ body {
   overflow-x: hidden;
 }
 
-#prime{
+#prime {
   display: none;
 }
 #asscroll-wrapper {
@@ -109,35 +109,42 @@ body {
 
     .content {
       position: absolute;
-      bottom: 1rem;
+      bottom: 2rem;
       left: 50%;
       transform: translateX(-50%);
-    }
-
-    .content {
+      text-align: center;
       color: #000;
       width: 45%;
-      text-align: center;
-    }
 
-    button {
-      padding: 0.7rem 1rem;
-      width: 12rem;
-      background-color: black;
-      outline: none;
-      border: none;
-      border-radius: 0.5rem;
-      margin-top: 1rem;
-      cursor: pointer;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: 0.1rem; /* 0.4rem */
-      font-size: 1rem;
-      transition: 0.1s ease;
-    }
+      h3 {
+        position: relative;
+        margin: 1rem 0;
+      }
 
-    button:hover {
-      letter-spacing: 0.4rem;
+      p {
+        position: relative;
+        margin: 1.5rem 0;
+      }
+      a {
+        text-align: center;
+        padding: 0.9rem 3rem;
+        width: 18rem;
+        background-color: black;
+        outline: none;
+        border: none;
+        border-radius: 0.5rem;
+        margin-top: 3rem;
+        cursor: pointer;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.1rem; /* 0.4rem */
+        font-size: 1rem;
+        transition: 0.1s ease;
+      }
+
+      a:hover {
+        letter-spacing: 0.4rem;
+      }
     }
   }
 }
@@ -201,7 +208,8 @@ body {
       text-align: center;
     }
 
-    button {
+    a {
+      text-align: center;
       padding: 0.8rem 2rem;
       width: 12rem;
       background-color: black;
@@ -216,7 +224,7 @@ body {
       transition: 0.1s ease;
     }
 
-    button:hover {
+    a:hover {
       letter-spacing: 0.4rem;
     }
   }
@@ -271,7 +279,8 @@ body {
       text-align: center;
     }
 
-    button {
+    a {
+      text-align: center;
       padding: 0.8rem 2rem;
       width: 12rem;
       background-color: black;
@@ -286,7 +295,7 @@ body {
       transition: 0.1s ease;
     }
 
-    button:hover {
+    a:hover {
       letter-spacing: 0.4rem;
     }
   }
@@ -335,6 +344,7 @@ nav {
 /* Base styles for NavLinks */
 .left a,
 .right a {
+  text-align: center;
   text-decoration: none; /* Removes default underline */
   position: relative;
   padding-bottom: 3px; /* Space for the underline */
@@ -344,7 +354,7 @@ nav {
 /* Underline on hover */
 .left a::after,
 .right a::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 2px; /* Thickness of the underline */
@@ -365,13 +375,11 @@ nav {
   width: 100%; /* Keeps the underline when the link is active */
 }
 
-
 .hero-heading .word-line {
   display: block; /* Each word-line takes its own line */
   white-space: nowrap; /* Characters within the word-line stay on one line */
   margin-bottom: 0.15em; /* Vertical spacing between "Refuel.", "Energy.", etc. */
 }
-
 
 .hammenu {
   position: fixed;
@@ -396,6 +404,7 @@ nav {
     font-size: 1.2rem;
 
     a {
+      text-align: center;
       text-decoration: none;
     }
   }
@@ -462,6 +471,7 @@ nav {
   }
 
   a {
+    text-align: center;
     text-decoration: none;
     position: absolute;
     top: 60%;
@@ -526,11 +536,12 @@ nav {
 
       img {
         height: 12rem;
-        width:  12rem;
+        width: 12rem;
         object-fit: cover;
       }
 
-      button {
+      a {
+        text-align: center;
         margin-top: 0.8rem;
         padding: 0.8rem 0.3rem;
         width: 12rem;
@@ -544,7 +555,7 @@ nav {
         letter-spacing: 0.2rem;
       }
 
-      button:hover {
+      a:hover {
         background-color: #000;
         color: #fff;
       }
@@ -571,24 +582,25 @@ nav {
     line-height: 1;
   }
 
-   button {
-        margin-top: 0.8rem;
-        padding: 0.8rem 0.3rem;
-        width: 18rem;
-        outline: none;
-        border: 1px solid black;
-        background-color: transparent;
-        transition: 0.4s ease-in;
-        cursor: pointer;
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
-      }
+  a {
+    text-align: center;
+    margin-top: 0.8rem;
+    padding: 0.8rem 0.3rem;
+    width: 18rem;
+    outline: none;
+    border: 1px solid black;
+    background-color: transparent;
+    transition: 0.4s ease-in;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
 
-      button:hover {
-        background-color: #000;
-        color: #fff;
-      }
+  a:hover {
+    background-color: #000;
+    color: #fff;
+  }
 
   .imgs {
     display: flex;
@@ -600,12 +612,11 @@ nav {
 
     img {
       height: 20rem;
-      width:  100%;
+      width: 100%;
       object-fit: cover;
       rotate: -90deg;
     }
   }
-
 }
 
 .view4 {
@@ -660,6 +671,7 @@ nav {
   }
 
   .canvas-box a {
+    text-align: center;
     padding: 0.8rem 0.3rem;
     width: 12rem;
     outline: none;
@@ -788,6 +800,7 @@ footer {
   .box2 a,
   .box3 a,
   .box4 a {
+    text-align: center;
     display: block;
     margin-bottom: 0.75rem;
     text-decoration: none;
@@ -813,7 +826,6 @@ footer {
       font-family: "Outfit";
       font-weight: 300;
       margin: 1.5rem 0;
-
     }
     input {
       padding: 0.8rem 1rem;
@@ -831,7 +843,8 @@ footer {
       margin: 1rem 0;
       font-weight: 100;
     }
-    button {
+    a {
+      text-align: center;
       border: 1px solid #fff;
       outline: none;
       padding: 0.8rem 2rem;
@@ -845,7 +858,7 @@ footer {
       transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
       /* font-family: "Outfit", sans-serif; */
     }
-    button:hover {
+    a:hover {
       background-color: rgb(255 255 255);
       color: rgb(0 0 0);
       border-radius: 0.125rem;
@@ -872,6 +885,7 @@ footer {
       gap: 1.5rem;
 
       a {
+        text-align: center;
         color: #fff;
         text-decoration: none;
         font-family: "Outfit";

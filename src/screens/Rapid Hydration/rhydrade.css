@@ -97,6 +97,10 @@
 
 @media (max-width: 768px) {
   .rhydrade-container {
+    .backArrow {
+      top: 1.2rem;
+      z-index: 99;
+    }
     .banner {
       margin-top: 1.5rem;
       height: 40dvh;

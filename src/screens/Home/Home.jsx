@@ -531,18 +531,18 @@ const Home = () => {
         <div ref={homeContentRef} className="home-content">
           <nav ref={navref}>
             <div className="left">
-              <NavLink to="/products">Shop</NavLink>
-              <NavLink
+              <a href="/products">Shop</a>
+              <a
                 target="_blank"
-                to="https://www.amazon.com/stores/page/DADD59A5-1DF2-49CC-997F-8A585A126AA8?ingress=2&visitId=1338204f-e6fa-49cf-a9a5-512a74962188&store_ref=bl_ast_dp_brandLogo_sto&ref_=ast_bln"
+                href="https://www.amazon.com/stores/page/DADD59A5-1DF2-49CC-997F-8A585A126AA8?ingress=2&visitId=1338204f-e6fa-49cf-a9a5-512a74962188&store_ref=bl_ast_dp_brandLogo_sto&ref_=ast_bln"
               >
                 Buy Prime
-              </NavLink>
+              </a>
             </div>
             <div className="middle">PRIME</div>
             <div className="right">
-              <NavLink to="/about-prime">About Prime</NavLink>
-              <NavLink to="/login">Login</NavLink>
+              <a href="/about-prime">About Prime</a>
+              <a href="/login">Login</a>
             </div>
           </nav>
 
@@ -569,9 +569,9 @@ const Home = () => {
               src="src\Assets\Home slide 1\bottle2.webp"
               alt=""
             />
-            <NavLink to="/products" ref={collectBtn}>
+            <a href="/products" ref={collectBtn}>
               Collect Now
-            </NavLink>
+            </a>
           </section>
 
           <div className="view1" ref={view1Ref}>
@@ -595,9 +595,9 @@ const Home = () => {
                     raspberry, and lemon-lime, offering a refreshing taste
                     perfect for summer.
                   </p>
-                  <button onClick={() => navigate("/products/hydration")}>
+                  <a href="/products/hydration">
                     BUY NOW
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -625,9 +625,9 @@ const Home = () => {
                   ripe strawberries with the creamy goodness of bananas,
                   creating a delightful.
                 </p>
-                <button onClick={() => navigate("/products/hydration")}>
+                <a href="/products/hydration">
                   BUY NOW
-                </button>
+                </a>
               </div>
             </div>
 
@@ -649,9 +649,9 @@ const Home = () => {
                   refreshment with the bold and tangy taste of cherries, perfect
                   for cooling down on hot days.
                 </p>
-                <button onClick={() => navigate("/products/hydration")}>
+                <a href="products/hydration">
                   BUY NOW
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -663,16 +663,16 @@ const Home = () => {
               <div className="product product1">
                 <img src="src\Assets\view2\PRIME_hydration_white.webp" alt="" />
                 <h3>Prime Collector Series</h3>
-                <button onClick={() => navigate("/products/hydration")}>
+                <a href="/products/hydration">
                   Know More
-                </button>
+                </a>
               </div>
               <div className="product produc2">
                 <img src="src\Assets\view2\Sournova.webp" alt="" />
                 <h3>Sournova</h3>
-                <button onClick={() => navigate("/products/hydration")}>
+                <a href="/products/hydration">
                   Know More
-                </button>
+                </a>
               </div>
               <div className="product product3">
                 <img
@@ -680,9 +680,9 @@ const Home = () => {
                   alt=""
                 />
                 <h3>Peso Pluma</h3>
-                <button onClick={() => navigate("/products/hydration")}>
+                <a href="/products/hydration">
                   Know More
-                </button>
+                </a>
               </div>
               <div className="product product4">
                 <img
@@ -690,9 +690,9 @@ const Home = () => {
                   alt=""
                 />
                 <h3>Future Freeze</h3>
-                <button onClick={() => navigate("/products/hydration")}>
+                <a href="/products/hydration">
                   Know More
-                </button>
+                </a>
               </div>
               <div className="product product5">
                 <img
@@ -700,9 +700,9 @@ const Home = () => {
                   alt=""
                 />
                 <h3>Cherry Freeze</h3>
-                <button onClick={() => navigate("/products/hydration")}>
+                <a href="/products/hydration">
                   Know More
-                </button>
+                </a>
               </div>
             </article>
           </section>
@@ -733,9 +733,9 @@ const Home = () => {
                 />
               </div>
             </div>
-            <button onClick={() => navigate("/products/rapid-hydration")}>
+            <a href="/products/rapid-hydration">
               VIEW MORE
-            </button>
+            </a>
           </section>
 
           <section className="view4" ref={view4Ref}>
@@ -850,15 +850,15 @@ const Home = () => {
                 </div>
               </div>
               <div className="box2">
-                <NavLink to="/products/rapid-hydration">
+                <a href="/products/rapid-hydration">
                   RAPID HYDRATION
-                </NavLink>
-                <NavLink to="/products/ice-hydration">ICE HYDRATION</NavLink>
-                <NavLink to="/products/hydration">HYDRATION</NavLink>
-                <NavLink to="/products/hydration-sticks">
+                </a>
+                <a href="/products/ice-hydration">ICE HYDRATION</a>
+                <a href="/products/hydration">HYDRATION</a>
+                <a href="/products/sticks">
                   HYDRATION + STICKS
-                </NavLink>
-                <NavLink to="/products/energy">ENERGY</NavLink>
+                </a>
+                <a href="/products/energy">ENERGY</a>
               </div>
             </div>
             <div className="bottom">

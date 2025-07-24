@@ -100,6 +100,10 @@
 
 
 @media (max-width: 768px) {
+  .ice-hydrate-container .backArrow{
+    top: 1.2rem;
+    z-index: 99;
+  }
   .banner {
     height: 40vh;
 
