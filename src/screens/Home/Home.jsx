@@ -727,7 +727,7 @@ const Home = () => {
               </div>
               <div className="img">
                 <img
-                  src="src\Assets\View3\PR_RapidRehydration_CBR_Web_PDP_Front_2000x2000_18fe6542-ade6-44fd-a8e5-1ef8b1fc5c84_600x.png"
+                  src="/View3/PR_RapidRehydration_CBR_Web_PDP_Front_2000x2000_18fe6542-ade6-44fd-a8e5-1ef8b1fc5c84_600x.png"
                   alt=""
                 />
               </div>

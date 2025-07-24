@@ -20,17 +20,17 @@ const Signup = () => {
         <div className="images">
           <img
             className="img1"
-            src="../../src/Assets/View4/CherryLimeade-Front_400x.webp"
+            src="/View4/CherryLimeade-Front_400x.webp"
             alt=""
           />
           <img
             className="img2"
-            src="../../src/Assets/View4/PE-Original_V2_400x.webp"
+            src="/View4/PE-Original_V2_400x.webp"
             alt=""
           />
           <img
             className="img3"
-            src="../../src/Assets/View4/PE-Dream_V2_400x.webp"
+            src="/View4/PE-Dream_V2_400x.webp"
             alt=""
           />
         </div>

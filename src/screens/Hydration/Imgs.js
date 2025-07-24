@@ -1,6 +1,6 @@
-import greenny from "../../Assets/Hydration/greenny.jpg"
-import blue from "../../Assets/Hydration/blue.jpg"
-import red from "../../Assets/Hydration/red.jpg"
-import wild from "../../Assets/Hydration/wild.jpg"
+import greenny from "/Hydration/greenny.jpg"
+import blue from "/Hydration/blue.jpg"
+import red from "/Hydration/red.jpg"
+import wild from "/Hydration/wild.jpg"
 
 export {greenny, blue, red, wild};

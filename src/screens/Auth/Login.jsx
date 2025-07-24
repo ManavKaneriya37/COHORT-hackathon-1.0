@@ -21,9 +21,9 @@ const Login = () => {
 
       <article>
         <div className="images">
-          <img className="img1" src="../../src/Assets/View4/CherryLimeade-Front_400x.webp" alt="" />
-          <img className="img2" src="../../src/Assets/View4/PE-Original_V2_400x.webp" alt="" />
-          <img className="img3" src="../../src/Assets/View4/PE-Dream_V2_400x.webp" alt="" />
+          <img className="img1" src="/View4/CherryLimeade-Front_400x.webp" alt="" />
+          <img className="img2" src="/View4/PE-Original_V2_400x.webp" alt="" />
+          <img className="img3" src="/View4/PE-Dream_V2_400x.webp" alt="" />
 
           {/* <img src="src/Assets/login/dd486de7b1b8daeb5f8fc333d542f16d.png" alt="" /> */}
         </div>
