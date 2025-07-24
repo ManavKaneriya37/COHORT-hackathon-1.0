@@ -5,10 +5,15 @@ import { products } from "./products.js";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, getCartTotal } from "../../features/itemSlice";
+import { toast } from "react-toastify";
+import lenis from "../../components/lenisInstance.js"
 
 const Hydrade = () => {
   const dispatch = useDispatch();
   dispatch(getCartTotal());
+  React.useEffect(() => {
+      lenis.scrollTo(0,0);
+  }, []);
 
   return (
     <div className="hydrade-container">

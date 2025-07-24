@@ -4,10 +4,16 @@ import { p1, p2, p3, collectionBanner } from "../Rapid Hydration/Imgs.js";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, getCartTotal } from "../../features/itemSlice.js";
+import { toast } from "react-toastify";
+import lenis from "../../components/lenisInstance.js"
 
 const Rhydrade = () => {
   const dispatch = useDispatch();
   dispatch(getCartTotal());
+
+  React.useEffect(() => {
+    lenis.scrollTo(0,0);
+}, []);
 
   return (
     <div className="rhydrade-container">

@@ -5,11 +5,14 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, getCartTotal } from "../../features/itemSlice";
 import { toast } from "react-toastify";
+import lenis from "../../components/lenisInstance";
 
 const IceHydrate = () => {
   // const itemsContainer = useSelector((state) => state.allCart);
   const dispatch = useDispatch();
-
+  React.useEffect(() => {
+    lenis.scrollTo(0, 0);
+  }, []);
   dispatch(getCartTotal());
 
   return (

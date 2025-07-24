@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./sticks.css";
 import { banner } from "./imgs.js";
 import { products } from "./sticks.js";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, getCartTotal } from "../../features/itemSlice";
+import { toast } from "react-toastify";
+import lenis from "../../components/lenisInstance.js"
 
 const Sticks = () => {
   const dispatch = useDispatch();
   dispatch(getCartTotal());
+
+  useEffect(() => {
+    lenis.scrollTo(0,0);
+}, []);
 
   return (
     <div className="sticks-container">

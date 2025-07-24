@@ -534,9 +534,9 @@ const Home = () => {
             />
 
             <img className="img3" src="/Home slide 1/bottle2.webp" alt="" />
-            <a href={`${import.meta.env.VITE_HOST}/products`} ref={collectBtn}>
+            <NavLink to={`/products`} ref={collectBtn}>
               Collect Now
-            </a>
+            </NavLink>
           </section>
 
           <div className="view1" ref={view1Ref}>
@@ -552,7 +552,7 @@ const Home = () => {
                     raspberry, and lemon-lime, offering a refreshing taste
                     perfect for summer.
                   </p>
-                  <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>BUY NOW</a>
+                  <NavLink to={`/products/hydration`}>BUY NOW</NavLink>
                 </div>
               </div>
             </div>
@@ -576,7 +576,7 @@ const Home = () => {
                   ripe strawberries with the creamy goodness of bananas,
                   creating a delightful.
                 </p>
-                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>BUY NOW</a>
+               <NavLink to={`/products/hydration`}>BUY NOW</NavLink>
               </div>
             </div>
 
@@ -598,7 +598,7 @@ const Home = () => {
                   refreshment with the bold and tangy taste of cherries, perfect
                   for cooling down on hot days.
                 </p>
-                <a href={`${import.meta.env.VITE_HOST}products/hydration`}>BUY NOW</a>
+                <NavLink to={`/products/hydration`}>BUY NOW</NavLink>
               </div>
             </div>
           </div>
@@ -610,27 +610,27 @@ const Home = () => {
               <div className="product product1">
                 <img src="/view2/PRIME_hydration_white.webp" alt="" />
                 <h3>Prime Collector Series</h3>
-                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
+                <NavLink to={`/products/hydration`}>Know More</NavLink>
               </div>
               <div className="product produc2">
                 <img src="/view2/Sournova.webp" alt="" />
                 <h3>Sournova</h3>
-                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
+                <NavLink to={`/products/hydration`}>Know More</NavLink>
               </div>
               <div className="product product3">
                 <img src="/view2/Prime_hydration_PesoPluma.webp" alt="" />
                 <h3>Peso Pluma</h3>
-                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
+                <NavLink to={`/products/hydration`}>Know More</NavLink>
               </div>
               <div className="product product4">
                 <img src="/view2/PrimeHydration_FutureFreeze.webp" alt="" />
                 <h3>Future Freeze</h3>
-                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
+                <NavLink to={`/products/hydration`}>Know More</NavLink>
               </div>
               <div className="product product5">
                 <img src="/view2/Prime_hydration_CherryFreeze.webp" alt="" />
                 <h3>Cherry Freeze</h3>
-                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>Know More</a>
+                <NavLink to={`/products/hydration`}>Know More</NavLink>
               </div>
             </article>
           </section>
@@ -661,7 +661,7 @@ const Home = () => {
                 />
               </div>
             </div>
-            <a href={`${import.meta.env.VITE_HOST}/products/rapid-hydration`}>VIEW MORE</a>
+            <NavLink to={`/products/rapid-hydration`}>VIEW MORE</NavLink>
           </section>
 
           <section className="view4" ref={view4Ref}>
@@ -679,7 +679,7 @@ const Home = () => {
                   <ModelViewer modelPath="/View4/Drink1.glb" />
                 </LazyCanvas>
                 <h4>Cherry Limeade</h4>
-                <a href={`${import.meta.env.VITE_HOST}/products/energy`}>view More</a>
+                <NavLink to={`/products/energy`}>view More</NavLink>
               </div>
 
               <div className="canvas-box">
@@ -694,7 +694,7 @@ const Home = () => {
                 </LazyCanvas>
 
                 <h4>Dripsicle</h4>
-                <a href={`${import.meta.env.VITE_HOST}/products/energy`}>view More</a>
+                <NavLink to={`/products/energy`}>view More</NavLink>
               </div>
 
               <div className="canvas-box">
@@ -708,7 +708,7 @@ const Home = () => {
                   <ModelViewer modelPath="/View4/Drink3.glb" />
                 </LazyCanvas>
                 <h4>Original</h4>
-                <a href={`${import.meta.env.VITE_HOST}/products/energy`}>view More</a>
+                <NavLink to={`/products/energy`}>view More</NavLink>
               </div>
             </div>
           </section>
@@ -763,11 +763,11 @@ const Home = () => {
               </div>
               <div className="box2">
                 <NavLink to="/login">LOGIN</NavLink>
-                <a href={`${import.meta.env.VITE_HOST}/products/rapid-hydration`}>RAPID HYDRATION</a>
-                <a href={`${import.meta.env.VITE_HOST}/products/ice-hydration`}>ICE HYDRATOIN</a>
-                <a href={`${import.meta.env.VITE_HOST}/products/hydration`}>HYDRATON</a>
-                <a href={`${import.meta.env.VITE_HOST}/products/sticks`}>HYDRATION + STICKS</a>
-                <a href={`${import.meta.env.VITE_HOST}/products/energy`}>ENERGY</a>
+                <NavLink to={`/rapid-hydration`}>RAPID HYDRATION</NavLink>
+                <NavLink to={`/products/ice-hydration`}>ICE HYDRATOIN</NavLink>
+                <NavLink to={`/products/hydration`}>HYDRATON</NavLink>
+                <NavLink to={`/products/sticks`}>HYDRATION + STICKS</NavLink>
+                <NavLink to={`/products/energy`}>ENERGY</NavLink>
               </div>
             </div>
             <div className="bottom">

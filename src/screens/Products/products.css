@@ -133,6 +133,8 @@
         margin-top: 1.3rem;
         display: flex;
         gap: 0.5rem;
+        position: relative;
+        z-index: 99;
 
         i {
           font-size: 1.2rem;
@@ -153,6 +155,11 @@
       border-radius: 10px;
     }
   }
+}
+
+.products-container .hydration{
+  position: relative;
+  z-index: 9999;
 }
 
 @media (max-width: 768px) {

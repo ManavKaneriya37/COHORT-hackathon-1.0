@@ -4,10 +4,17 @@ import { p1, p2, p3, e1, e2, e3, e4 } from "./Imgs.js";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, getCartTotal } from "../../features/itemSlice";
+import { toast } from "react-toastify";
+import lenis from "../../components/lenisInstance.js"
+
 
 const Energy = () => {
   const dispatch = useDispatch();
   dispatch(getCartTotal());
+
+  React.useEffect(() => {
+      lenis.scrollTo(0,0);
+  }, []);
 
   return (
     <div className="energy-container">
