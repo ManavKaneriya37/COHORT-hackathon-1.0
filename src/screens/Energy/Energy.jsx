@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import "./Energy.css";
+import "./energy.css";
 import { p1, p2, p3, e1, e2, e3, e4 } from "./Imgs.js";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
