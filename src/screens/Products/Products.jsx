@@ -11,7 +11,7 @@ import {
   energybanner,
   sticksbanner,
 } from "./imgs";
-import "./Products.css";
+import "./products.css";
 import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);

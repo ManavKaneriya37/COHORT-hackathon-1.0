@@ -1,5 +1,5 @@
 import React from "react";
-import "./Rhydrade.css";
+import "./rhydrade.css";
 import { p1, p2, p3, collectionBanner } from "../Rapid Hydration/Imgs.js";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";

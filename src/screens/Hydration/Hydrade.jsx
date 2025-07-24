@@ -1,5 +1,5 @@
 import React from "react";
-import "./Hydrade.css";
+import "./hydrade.css";
 import { greenny, blue, red, wild } from "./Imgs.js";
 import { products } from "./products.js";
 import { NavLink } from "react-router-dom";
