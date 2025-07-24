@@ -552,20 +552,20 @@ const Home = () => {
             <h5>THE ULTIMATE COLLECTORS TAKE HOME $1M USD*</h5>
             <img
               className="img1"
-              src="../../../public/Home slide 1/bottle1.webp"
+              src="/Home slide 1/bottle1.webp"
               alt=""
             />
 
             <img
               ref={bottleRef}
               className="img2"
-              src="../../../public/page1center.png"
+              src="/page1center.png"
               alt=""
             />
 
             <img
               className="img3"
-              src="../../../public/Home slide 1/bottle2.webp"
+              src="/Home slide 1/bottle2.webp"
               alt=""
             />
             <a href="/products" ref={collectBtn}>
@@ -577,12 +577,12 @@ const Home = () => {
             <div className="page page1" ref={page1Ref}>
               <div className="page1display">
                 <img
-                  src="../../../public/Page1/candy1.png"
+                  src="/Page1/candy1.png"
                   alt=""
                   className="candy1"
                 />
                 <img
-                  src="../../../public/Page1/candy2.png"
+                  src="/Page1/candy2.png"
                   alt=""
                   className="candy2"
                 />
@@ -604,18 +604,18 @@ const Home = () => {
             <div className="page page2" ref={page2Ref}>
               <div className="page2display">
                 <img
-                  src="../../../public/page2/banana.png"
+                  src="/page2/banana.png"
                   alt=""
                   className="obj1"
                 />
                 <img
-                  src="../../../public/page2/strawberry-isolated-white-background-close-up-removebg-preview 1.png"
+                  src="/page2/strawberry-isolated-white-background-close-up-removebg-preview 1.png"
                   alt=""
                   className="obj2"
                 />
                 <img
                   className="centerImg"
-                  src="../../../public/page2/HydrationFront_600x 1.png"
+                  src="/page2/HydrationFront_600x 1.png"
                   alt=""
                 />
                 <h3>Strawberry Banana</h3>
@@ -633,13 +633,13 @@ const Home = () => {
             <div className="page  page3" ref={page3Ref}>
               <div className="page3display">
                 <img
-                  src="../../../public/page3/Bunch_of_fresh_red_cherries_-3-removebg-preview 1.png"
+                  src="/page3/Bunch_of_fresh_red_cherries_-3-removebg-preview 1.png"
                   alt=""
                   className="obj1"
                 />
                 <img
                   className="centerImg"
-                  src="../../../public/page3/CherryFreeze.png"
+                  src="/page3/CherryFreeze.png"
                   alt=""
                 />
                 <h3>Cherry Freeze</h3>
@@ -660,14 +660,14 @@ const Home = () => {
 
             <article>
               <div className="product product1">
-                <img src="../../../public/view2/PRIME_hydration_white.webp" alt="" />
+                <img src="/view2/PRIME_hydration_white.webp" alt="" />
                 <h3>Prime Collector Series</h3>
                 <a href="/products/hydration">
                   Know More
                 </a>
               </div>
               <div className="product produc2">
-                <img src="../../../public/view2/Sournova.webp" alt="" />
+                <img src="/view2/Sournova.webp" alt="" />
                 <h3>Sournova</h3>
                 <a href="/products/hydration">
                   Know More
@@ -675,7 +675,7 @@ const Home = () => {
               </div>
               <div className="product product3">
                 <img
-                  src="../../../public/view2/Prime_hydration_PesoPluma.webp"
+                  src="/view2/Prime_hydration_PesoPluma.webp"
                   alt=""
                 />
                 <h3>Peso Pluma</h3>
@@ -685,7 +685,7 @@ const Home = () => {
               </div>
               <div className="product product4">
                 <img
-                  src="../../../public/view2/PrimeHydration_FutureFreeze.webp"
+                  src="/view2/PrimeHydration_FutureFreeze.webp"
                   alt=""
                 />
                 <h3>Future Freeze</h3>
@@ -695,7 +695,7 @@ const Home = () => {
               </div>
               <div className="product product5">
                 <img
-                  src="../../../public/view2/Prime_hydration_CherryFreeze.webp"
+                  src="/view2/Prime_hydration_CherryFreeze.webp"
                   alt=""
                 />
                 <h3>Cherry Freeze</h3>
@@ -715,13 +715,13 @@ const Home = () => {
             <div className="imgs">
               <div className="img">
                 <img
-                  src="../../../public/View3/PR_RapidRehydration_GO_Web_PDP_Front_2000x2000_fd03bf87-bb43-4ca6-9767-756907babcd5_600x.png"
+                  src="/View3/PR_RapidRehydration_GO_Web_PDP_Front_2000x2000_fd03bf87-bb43-4ca6-9767-756907babcd5_600x.png"
                   alt=""
                 />
               </div>
               <div className="img">
                 <img
-                  src="../../../public/View3/PR_RapidRehydration_OC_Web_PDP_Front_2000x2000_a0a85545-b084-4303-86d8-5ced85a845b1_600x.png"
+                  src="/View3/PR_RapidRehydration_OC_Web_PDP_Front_2000x2000_a0a85545-b084-4303-86d8-5ced85a845b1_600x.png"
                   alt=""
                 />
               </div>
@@ -749,7 +749,7 @@ const Home = () => {
                     intensity={1}
                     castShadow
                   />
-                  <ModelViewer modelPath="../../../public/View4/Drink1.glb" />
+                  <ModelViewer modelPath="/View4/Drink1.glb" />
                 </LazyCanvas>
                 <h4>Cherry Limeade</h4>
                 <a href="/products/energy">view More</a>
@@ -763,7 +763,7 @@ const Home = () => {
                     intensity={1}
                     castShadow
                   />
-                  <ModelViewer modelPath="../../../public/View4/Drink2.glb" />
+                  <ModelViewer modelPath="/View4/Drink2.glb" />
                 </LazyCanvas>
 
                 <h4>Dripsicle</h4>
@@ -778,7 +778,7 @@ const Home = () => {
                     intensity={1}
                     castShadow
                   />
-                  <ModelViewer modelPath="../../../public/View4/Drink3.glb" />
+                  <ModelViewer modelPath="/View4/Drink3.glb" />
                 </LazyCanvas>
                 <h4>Original</h4>
                 <a href="/products/energy">view More</a>
@@ -790,28 +790,28 @@ const Home = () => {
             <div className="left">
               <img
                 className="can1"
-                src="../../../public/View4/CherryLimeade-Front_400x.webp"
+                src="/View4/CherryLimeade-Front_400x.webp"
                 alt=""
               />
               <img
                 className="can2"
-                src="../../../public/View4/PE-Original_V2_400x.webp"
+                src="/View4/PE-Original_V2_400x.webp"
                 alt=""
               />
               <img
                 className="can3"
-                src="../../../public/View4/PRIME_energy_1serve_16oz_US_Drpsicle_00000_400x.webp"
+                src="/View4/PRIME_energy_1serve_16oz_US_Drpsicle_00000_400x.webp"
                 alt=""
               />
               <img
                 className="can4"
-                src="../../../public/View4/PE-Dream_V2_400x.webp  "
+                src="/View4/PE-Dream_V2_400x.webp  "
                 alt=""
               />
             </div>
             <div className="right">
               <img
-                src="../../../public/View5/Updated_PRIME_US_Energy_Grouped_Callout_Image_-_Oct_2023_1000x.webp"
+                src="/View5/Updated_PRIME_US_Energy_Grouped_Callout_Image_-_Oct_2023_1000x.webp"
                 alt=""
               />
             </div>
