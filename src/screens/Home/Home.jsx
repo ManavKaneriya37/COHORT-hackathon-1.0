@@ -14,7 +14,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const homeContentRef = useRef(null);
@@ -24,34 +24,38 @@ const Home = () => {
   const page3Ref = useRef();
   const view1Ref = useRef();
   const view2Ref = useRef();
+  const footerRef = useRef();
   const bottleRef = useRef();
   const slide1h1 = useRef();
+  const view3Ref = useRef();
   const collectBtn = useRef();
   const slide1 = useRef();
+  const view4Ref = useRef();
+  const view4head = useRef();
 
   useEffect(() => {
     if (!loading) {
       handleLoaderFinish();
     }
   }, [loading]);
+
   useEffect(() => {
     const lenis = new Lenis({
-      smooth: true,
-      duration: 2.5, // Reduced from 4 for smoother feel
+      duration: 1.8, // Slightly slower easing
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
       smoothTouch: true,
-      touchMultiplier: 2, // Added for better touch response
-      wheelMultiplier: 1.2, // Added for smoother wheel scrolling
-      syncTouch: true, // Added to sync touch movements
-      infinite: false,
+      touchMultiplier: 0.6, // lower = harder to scroll on touch
+      wheelMultiplier: 0.6,
     });
 
-    const animate = (time) => {
+    function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(animate);
-    };
+      ScrollTrigger.update()
+      requestAnimationFrame(raf);
+    }
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(raf);
 
     return () => {
       lenis.destroy();
@@ -112,12 +116,17 @@ const Home = () => {
       spans,
       {
         opacity: 0,
+        y: 20, // Add y translation
+        scale: 0.9, // Add scale
       },
       {
         stagger: {
-          amount: 0.6,
+          amount: 0.8,
         },
         opacity: 1,
+        y: 0, // Animate back to original position
+        scale: 1, // Animate back to original scale
+        ease: "back.out(1.7)", // A more dynamic ease
       }
     );
 
@@ -170,22 +179,57 @@ const Home = () => {
 
     gsap.fromTo(
       page1Elements,
-      { opacity: 0, y: 50, scale: 0.95 },
+      { opacity: 0, y: 50, scale: 0.95, skewY: 5 }, // Add skewY
       {
         opacity: 1,
         y: 0,
         scale: 1,
+        skewY: 0, // Animate skewY back to 0
         duration: 1.8,
-        stagger: 0.15,
+        stagger: 0.3,
         delay: 0.4,
-        ease: "elastic.inOut",
+        ease: "elastic.out(0.5)", // More dynamic elastic ease
         scrollTrigger: {
           trigger: page1Ref.current,
-          start: "top bottom",
+          once: true,
+          start: "top 80%", 
+          end: "bottom bottom"
         },
-      },
-      "-=0.4"
+      }
     );
+
+    gsap.to(page1Ref.current.querySelector(".candy1"), {
+      y: -30,
+      x: 20,
+      rotate: 15,
+      scale: 1.1,
+      repeat: -1, // Infinite loop
+      yoyo: true, // Go back and forth
+      ease: "power1.inOut",
+      duration: 3,
+      scrollTrigger: {
+        trigger: page1Ref.current,
+        start: "top bottom",
+        toggleActions: "play pause resume reverse", // Play when entering, pause when leaving
+      },
+    });
+
+    gsap.to(page1Ref.current.querySelector(".candy2"), {
+      y: 20,
+      x: -15,
+      rotate: -10,
+      scale: 1.05,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      duration: 3.5,
+      delay: 0.5,
+      scrollTrigger: {
+        trigger: page1Ref.current,
+        start: "top bottom",
+        toggleActions: "play pause resume reverse",
+      },
+    });
 
     // ScrollTrigger for Page 2
     const page2Elements =
@@ -193,14 +237,15 @@ const Home = () => {
 
     gsap.fromTo(
       page2Elements,
-      { opacity: 0, y: 50, scale: 0.95 },
+      { opacity: 0, y: 50, scale: 0.95, skewY: 5 },
       {
         opacity: 1,
         y: 0,
+        skewY: 0, // Animate skewY back to 0
         scale: 1,
         duration: 1,
         stagger: 0.15,
-        ease: "elastic.inOut",
+        ease: "elastic.out(1, 0.5)",
         scrollTrigger: {
           trigger: page2Ref.current,
           start: "top 65%",
@@ -215,14 +260,15 @@ const Home = () => {
 
     gsap.fromTo(
       page3Elements,
-      { opacity: 0, y: 50, scale: 0.95 },
+      { opacity: 0, y: 50, scale: 0.95, skewY: 5 },
       {
         opacity: 1,
         y: 0,
+        skewY: 0, // Animate skewY back to 0
         scale: 1,
         duration: 1,
         stagger: 0.15,
-        ease: "elastic.inOut",
+        ease: "elastic.out(1, 0.5)",
         scrollTrigger: {
           trigger: page3Ref.current,
           start: "top 65%",
@@ -242,6 +288,187 @@ const Home = () => {
         scrub: 2,
       },
     });
+
+    const view3head = view3Ref.current.querySelector("h3");
+    gsap.fromTo(
+      view3head,
+      {
+        y: -40,
+        opacity: 0,
+        skewX: -20,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        skewX: 0,
+        scrollTrigger: {
+          trigger: view3Ref.current,
+          start: "top 90%",
+          end: "+=500",
+          scrub: true,
+        },
+      }
+    );
+    // In useEffect where other ScrollTriggers are
+    const view3Imgs = view3Ref.current.querySelectorAll(".imgs img"); // Assuming you add a ref to view3 for this
+
+    gsap.fromTo(
+      view3Imgs,
+      {
+        opacity: 0,
+        x: -100, // Start off-screen left
+        rotate: 0, // Start with no rotation
+      },
+      {
+        opacity: 1,
+        x: 0, // Move to original x position
+        rotate: -90, // Rotate to -90 degrees
+        duration: 1.5,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: view3Ref.current,
+          start: "top 90%",
+          end: "+=400",
+          scrub: true,
+          toggleActions: "play none none none",
+        },
+      }
+    );
+
+    // const view4head = view4Ref.current.querySelector("h2")
+    // gsap.fromTo(view4head, {
+    //   opacity: 0,
+    //   y:-200
+    // },{
+    //   y: 40,
+    //   opacity: 1,
+    //   scrollTrigger: {
+    //     trigger: view4Ref.current,
+    //     start: "top bottom",
+    //     scrub: true,
+    //     toggleActions: "play none none none"
+    //   }
+    // })
+
+    let stmt = view4head.current;
+
+    // Ensure stmt exists before proceeding
+    if (stmt) {
+      const wrds = stmt.textContent.split(""); // Get text content and split into characters
+      stmt.innerHTML = ""; // Clear existing content
+
+      // Corrected: Use innerHTML += to append span elements
+      wrds.forEach((word) => {
+        stmt.innerHTML += `<span>${word === " " ? "&nbsp;" : word}</span>`; // Handle spaces with &nbsp;
+      });
+
+      // console.log(stmt); // This will log the DOM element, not its string representation
+
+      const splits = stmt.querySelectorAll("span"); // Select all newly created spans
+      gsap.fromTo(
+        splits,
+        {
+          x: -50,
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          stagger: {
+            amount: 0.9,
+          }, // Adjusted stagger for a faster, more natural reveal
+          ease: "power2.out", // Added an ease for smoother animation
+          scrollTrigger: {
+            trigger: view4Ref.current, // Ensure view4Ref is correctly set up
+            start: "top 90%", // When the top of the trigger hits 90% from the top of the viewport
+            toggleActions: "play none none none", // Play animation once when entering viewport
+          },
+        }
+      );
+    }
+
+    // In useEffect where other ScrollTriggers are
+    const canvasBoxes = view4Ref.current.querySelectorAll(
+      ".canvas-row .canvas-box"
+    ); // Assuming you add a ref to view4
+
+    gsap.fromTo(
+      canvasBoxes,
+      {
+        opacity: 0,
+        y: 100,
+        rotationX: -90, // Rotate on X-axis for a 3D flip effect
+        transformOrigin: "center center",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        rotationX: 0,
+        duration: 1,
+        stagger: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: view4Ref.current,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+
+    // In useEffect where other ScrollTriggers are
+    const footerTopBoxes = footerRef.current.querySelectorAll(".top > div"); // Assuming you add a ref to the footer
+    const footerBottom = footerRef.current.querySelector(".bottom");
+    const footerUserStuff = footerRef.current.querySelector(".user-stuff");
+
+    gsap.fromTo(
+      footerTopBoxes,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 95%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      footerBottom,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: footerBottom,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      footerUserStuff,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: footerUserStuff,
+          start: "top 95%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
 
     view2Animation(tl);
   };
@@ -267,18 +494,33 @@ const Home = () => {
 
     const allProducts = view2Ref.current.querySelectorAll("article .product");
 
-    tl.to(allProducts, {
-      opacity: 1,
-      duration: 2,
-      scrollTrigger: {
-        trigger: view2Ref.current,
-        start: "top bottom",
-        scrub: true,
-        stagger: {
-          amount: 0.3,
-        },
+    tl.fromTo(
+      allProducts,
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.6,
       },
-    });
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1, // Increased duration for a slower reveal
+        ease: "back.out(1.7)", // A nice bouncy ease
+        scrollTrigger: {
+          trigger: view2Ref.current,
+          start: "top 70%", // Start earlier
+          end: "bottom center", // End when the section is mostly visible
+          scrub: 0.5, // Slightly scrubbed entrance
+          stagger: {
+            amount: 0.5, // Slower stagger
+            grid: "auto", // Stagger based on grid layout if applicable
+            from: "center", // Stagger from the center outwards
+          },
+          toggleActions: "play none none none",
+        },
+      }
+    );
   };
 
   return (
@@ -353,7 +595,9 @@ const Home = () => {
                     raspberry, and lemon-lime, offering a refreshing taste
                     perfect for summer.
                   </p>
-                  <button onClick={() => navigate('/products/hydration')}>BUY NOW</button>
+                  <button onClick={() => navigate("/products/hydration")}>
+                    BUY NOW
+                  </button>
                 </div>
               </div>
             </div>
@@ -381,7 +625,9 @@ const Home = () => {
                   ripe strawberries with the creamy goodness of bananas,
                   creating a delightful.
                 </p>
-                <button onClick={() => navigate('/products/hydration')}>BUY NOW</button>
+                <button onClick={() => navigate("/products/hydration")}>
+                  BUY NOW
+                </button>
               </div>
             </div>
 
@@ -403,7 +649,9 @@ const Home = () => {
                   refreshment with the bold and tangy taste of cherries, perfect
                   for cooling down on hot days.
                 </p>
-                <button onClick={() => navigate('/products/hydration')}>BUY NOW</button>
+                <button onClick={() => navigate("/products/hydration")}>
+                  BUY NOW
+                </button>
               </div>
             </div>
           </div>
@@ -415,12 +663,16 @@ const Home = () => {
               <div className="product product1">
                 <img src="src\Assets\view2\PRIME_hydration_white.webp" alt="" />
                 <h3>Prime Collector Series</h3>
-                <button onClick={() => navigate('/products/hydration')}>Know More</button>
+                <button onClick={() => navigate("/products/hydration")}>
+                  Know More
+                </button>
               </div>
               <div className="product produc2">
                 <img src="src\Assets\view2\Sournova.webp" alt="" />
                 <h3>Sournova</h3>
-                <button onClick={() => navigate('/products/hydration')}>Know More</button>
+                <button onClick={() => navigate("/products/hydration")}>
+                  Know More
+                </button>
               </div>
               <div className="product product3">
                 <img
@@ -428,7 +680,9 @@ const Home = () => {
                   alt=""
                 />
                 <h3>Peso Pluma</h3>
-                <button onClick={() => navigate('/products/hydration')}>Know More</button>
+                <button onClick={() => navigate("/products/hydration")}>
+                  Know More
+                </button>
               </div>
               <div className="product product4">
                 <img
@@ -436,7 +690,9 @@ const Home = () => {
                   alt=""
                 />
                 <h3>Future Freeze</h3>
-                <button onClick={() => navigate('/products/hydration')}>Know More</button>
+                <button onClick={() => navigate("/products/hydration")}>
+                  Know More
+                </button>
               </div>
               <div className="product product5">
                 <img
@@ -444,12 +700,14 @@ const Home = () => {
                   alt=""
                 />
                 <h3>Cherry Freeze</h3>
-                <button onClick={() => navigate('/products/hydration')}>Know More</button>
+                <button onClick={() => navigate("/products/hydration")}>
+                  Know More
+                </button>
               </div>
             </article>
           </section>
 
-          <section className="view3">
+          <section ref={view3Ref} className="view3">
             <h3>
               RAPID
               <br />
@@ -475,10 +733,13 @@ const Home = () => {
                 />
               </div>
             </div>
+            <button onClick={() => navigate("/products/rapid-hydration")}>
+              VIEW MORE
+            </button>
           </section>
 
-          <section className="view4">
-            <h2>ENERGY</h2>
+          <section className="view4" ref={view4Ref}>
+            <h2 ref={view4head}>ENERGY</h2>
 
             <div className="canvas-row">
               <div className="canvas-box">
@@ -492,7 +753,7 @@ const Home = () => {
                   <ModelViewer modelPath="src\Assets\View4\Drink1.glb" />
                 </LazyCanvas>
                 <h4>Cherry Limeade</h4>
-                <button onClick={() => navigate('/products/energy')}>LEARN MORE</button>
+                <a href="/products/energy">view More</a>
               </div>
 
               <div className="canvas-box">
@@ -507,7 +768,7 @@ const Home = () => {
                 </LazyCanvas>
 
                 <h4>Dripsicle</h4>
-                <button onClick={() => navigate('/products/energy')}>LEARN MORE</button>
+                <a href="/products/energy">view More</a>
               </div>
 
               <div className="canvas-box">
@@ -521,7 +782,7 @@ const Home = () => {
                   <ModelViewer modelPath="src\Assets\View4\Drink3.glb" />
                 </LazyCanvas>
                 <h4>Original</h4>
-                <button onClick={() => navigate('/products/energy')}>LEARN MORE</button>
+                <a href="/products/energy">view More</a>
               </div>
             </div>
           </section>
@@ -557,7 +818,7 @@ const Home = () => {
             </div>
           </div>
 
-          <footer>
+          <footer ref={footerRef}>
             <div className="top">
               <div className="box1">
                 <h2>About Prime</h2>
@@ -598,20 +859,6 @@ const Home = () => {
                   HYDRATION + STICKS
                 </NavLink>
                 <NavLink to="/products/energy">ENERGY</NavLink>
-              </div>
-              <div className="box3">
-                <NavLink to="">ABOUT PRIME</NavLink>
-                <NavLink to="">TEAM + ATHLETES</NavLink>
-                <NavLink to="">CREATORS</NavLink>
-                <NavLink to="">ARTISTS</NavLink>
-                <NavLink to="">AMBASSADORS</NavLink>
-              </div>
-              <div className="box4">
-                <NavLink to="">FAQS</NavLink>
-                <NavLink to="">PRIVACY POLICY</NavLink>
-                <NavLink to="">RETURN POLICY</NavLink>
-                <NavLink to="">WHERE TO BUY</NavLink>
-                <NavLink to="">CONTACT US</NavLink>
               </div>
             </div>
             <div className="bottom">

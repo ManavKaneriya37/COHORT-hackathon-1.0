@@ -10,7 +10,7 @@
 
   .backArrow{
     text-decoration: none;
-    position: absolute;
+    position: fixed;
     top: 6.5rem;
     left: 1rem;
 

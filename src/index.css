@@ -1,1 +1,5 @@
-/* @import "tailwindcss"; */
+@import "tailwindcss";
+
+html, body {
+  overflow: auto; /* ✅ Required for scrollTo to work */
+}

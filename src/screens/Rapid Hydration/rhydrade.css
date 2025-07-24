@@ -1,8 +1,8 @@
 .rhydrade-container {
   .backArrow {
     text-decoration: none;
-    position: absolute;
-    top: 5rem;
+    position: fixed;
+    top: 6.5rem;
     left: 1rem;
 
     div {
@@ -74,7 +74,7 @@
         margin: 1rem 0;
       }
 
-      a {
+      button {
         border: 1px solid #000;
         padding: 0.8rem 1.8rem;
         font-family: "Funnel Sans", sans-serif;
@@ -86,7 +86,7 @@
         cursor: pointer;
         text-decoration: none;
       }
-      a:hover {
+      button:hover {
         background-color: #000;
         color: #fff;
         transition: all 0.3s ease-in-out;

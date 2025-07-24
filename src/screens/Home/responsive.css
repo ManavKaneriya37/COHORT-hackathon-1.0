@@ -1,15 +1,15 @@
 @media (max-width: 768px) {
-
   #prime {
     display: block;
     font-size: 2.5em;
     text-align: center;
   }
   nav {
+    display: none;
     background: rgba(0, 0, 0, 0.8); /* Darker background for mobile */
   }
 
-  nav .left,
+  /* nav .left,
   nav .right {
     display: none;
   }
@@ -20,7 +20,7 @@
     text-align: center;
     color: #fff;
     width: 100%;
-  }
+  } */
 
   /* Mobile menu styles */
   .mobile-menu {
@@ -38,7 +38,8 @@
     transform: translateX(0);
   }
 
-  .slide1 {
+  .home-content .slide1 {
+    padding: 0rem 1rem 2rem 1rem;
     height: calc(100vh - 60px); /* Account for nav height */
     flex-direction: column;
     align-items: center;
@@ -53,7 +54,7 @@
       height: 15em;
       width: 15em;
       top: 15%;
-      left: 40%;
+      left: 30%;
     }
     .img1 {
       height: 12em;
@@ -69,29 +70,30 @@
     width: 70%;
   }
 
-  .slide1 h5 {
+  .home-content .slide1 h5 {
     font-size: 0.7em;
     width: 100%;
     position: absolute;
-    top: 33%;
-    width: 12em;
+    top: 25%;
+    left: 5%;
+    width: 22em;
     color: rgba(0, 0, 0, 0.3);
   }
 
-  .slide1 img {
+  .home-content .slide1 img {
     position: relative;
     height: 10em;
     width: 10em;
   }
 
-  .slide1 button {
+  .home-content .slide1 button {
     padding: 0.7em 0.5em;
     word-break: break-all;
     font-size: 1em;
     letter-spacing: 0.2em;
-    left: 5%;
     bottom: 10%;
     top: unset;
+    transform: scale(0);
   }
 
   .home-content .page1 {
@@ -187,7 +189,7 @@
   }
 
   .view2 {
-    height: 200vh;
+    height: 100vh;
   }
 
   .view2 h5 {
@@ -228,7 +230,9 @@
     font-size: 2em;
     letter-spacing: 0.2em;
   }
-
+  .view3 button{
+    margin-top: 8rem;
+  }
   .view4 h2 {
     font-size: 2em;
     letter-spacing: 0.3em;
@@ -240,31 +244,15 @@
   }
 
   .view5 {
-    height: 90vh;
-    flex-direction: column;
+    height: 55vh;
+    flex-direction: column; 
     align-items: center;
-    justify-content: space-around;
+    justify-content: start;
     padding: 1em;
     gap: 12em;
-
-    .can1 {
-      left: -18%;
-    }
-    .can2 {
-      left: -4%;
-    }
-    .can3 {
-      left: 15%;
-    }
-    .can4 {
-      left: 35%;
-    }
   }
-
-  .view5 .left,
-  .view5 .right {
-    width: 100%;
-    position: relative;
+  .view5 .left {
+    /* display: none; */
   }
 
   .view5 .right {
@@ -337,7 +325,6 @@
 }
 
 @media (min-height: 900px) {
-  
   .home-content .view1 {
     .page2,
     .page3 {

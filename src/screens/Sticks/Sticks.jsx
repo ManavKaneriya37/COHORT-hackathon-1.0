@@ -3,14 +3,17 @@ import "./Sticks.css";
 import { banner } from "./imgs.js";
 import { products } from "./sticks.js";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, getCartTotal } from "../../features/itemSlice";
 
 const Sticks = () => {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
+  const dispatch = useDispatch();
+  dispatch(getCartTotal());
+
   return (
     <div className="sticks-container">
-      <NavLink to={-1} className="backArrow">
+      <NavLink to="/products" className="backArrow">
         <div>
           <i class="ri-arrow-left-line"></i>
         </div>
@@ -25,7 +28,21 @@ const Sticks = () => {
           <div key={index} className="product-item">
             <img src={product.img} alt={product.title} />
             <h2>{product.title}</h2>
-            <a href={product.href}>LEARN MORE</a>
+            <button
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    id: product.id,
+                    img: product.img,
+                    name: product.title,
+                    price: product.price,
+                    qty: 1,
+                  })
+                )
+              }
+            >
+              ADD TO CART
+            </button>
           </div>
         ))}
       </div>

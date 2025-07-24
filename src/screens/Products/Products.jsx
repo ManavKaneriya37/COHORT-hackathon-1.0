@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "remixicon/fonts/remixicon.css";
 import { NavLink } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import {
   icebanner,
@@ -10,14 +12,77 @@ import {
   sticksbanner,
 } from "./imgs";
 import "./Products.css";
+import Lenis from "@studio-freight/lenis";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Products = () => {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const productsContainerRef = useRef(null); // Ref for the main container
+
+  useEffect(() => {
+    // Initialize Lenis
+    const lenis = new Lenis({
+      smooth: true,
+      duration: 2.5,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothTouch: true,
+      touchMultiplier: 0.6,
+      wheelMultiplier: 0.6,
+      syncTouch: true,
+      infinite: false,
+    });
+
+    // Tell ScrollTrigger to use Lenis for scroll events
+    // This is crucial for synchronizing GSAP with Lenis
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000); // Lenis expects milliseconds
+    });
+    gsap.ticker.lagSmoothing(0); // Optional: Disable lag smoothing for more immediate updates
+
+
+    // Animation for each product section (scroll-triggered)
+    gsap.utils.toArray(".products-container > div:not(.backArrow)").forEach((section) => {
+        gsap.fromTo(section, {
+          opacity: 0,
+          y: -200,
+          scale: 0.9,
+        },{
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          stagger: 1,
+            scrollTrigger: {
+                trigger: section,
+                start: "top 15%",
+                toggleActions: "play none none none",
+                scroller: document.body,
+
+            }
+        });
+        // ... other inner element animations ...
+    });
+
+
+    // Cleanup function
+    return () => {
+      lenis.destroy();
+      // Remove the Lenis scroll listener for ScrollTrigger updates
+      lenis.off("scroll", ScrollTrigger.update);
+      gsap.ticker.remove((time) => {
+        lenis.raf(time * 1000);
+      });
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Clean up all ScrollTriggers
+    };
+  }, []); // Empty dependency array ensures this runs once on mount
+
   return (
-    <div className="products-container">
-      <NavLink to={-1} className="backArrow"><div><i class="ri-arrow-left-line"></i></div></NavLink>
+    <div className="products-container" ref={productsContainerRef}>
+      <NavLink to="/" className="backArrow">
+        <div>
+          <i className="ri-arrow-left-line"></i>
+        </div>
+      </NavLink>
       <h1>PRODUCTS</h1>
 
       <div className="ice-hydration">
@@ -35,11 +100,10 @@ const Products = () => {
             antioxidants, it's hydration that works as hard as you do – and
             tastes like summer in a bottle.
           </p>
-          <NavLink to="/products/ice-hydration">
-            VIEW <i class="ri-arrow-right-line"></i>
-          </NavLink>
+          <a href="/products/ice-hydration">
+            VIEW <i className="ri-arrow-right-line"></i>
+          </a>
         </div>
-
         <img src={icebanner} alt="" />
       </div>
 
@@ -59,9 +123,9 @@ const Products = () => {
             boost your body craves — whether you’re in the gym, on the field, or
             on the go. Hydrate like a pro. Stay PRIME.
           </p>
-          <NavLink to="/products/hydration">
-            VIEW <i class="ri-arrow-right-line"></i>
-          </NavLink>
+          <a href="/products/hydration">
+            VIEW <i className="ri-arrow-right-line"></i>
+          </a>
         </div>
       </div>
 
@@ -80,9 +144,9 @@ const Products = () => {
             smarter, cleaner way to rehydrate — anytime, anywhere. When seconds
             matter, stay sharp. Stay Rapid. Stay PRIME.
           </p>
-          <NavLink to="/products/rapid-hydration">
-            VIEW <i class="ri-arrow-right-line"></i>
-          </NavLink>
+          <a href="/products/rapid-hydration">
+            VIEW <i className="ri-arrow-right-line"></i>
+          </a>
         </div>
         <img src={rapidhydrationbanner} alt="" />
       </div>
@@ -102,9 +166,9 @@ const Products = () => {
             and gaming to long days and late nights. No jitters. No compromises.
             Just pure, elevated energy. Level up with PRIME.
           </p>
-          <NavLink to="/products/energy">
-            VIEW <i class="ri-arrow-right-line"></i>
-          </NavLink>
+          <a href="/products/energy">
+            VIEW <i className="ri-arrow-right-line"></i>
+          </a>
         </div>
       </div>
 
@@ -125,9 +189,9 @@ const Products = () => {
             Hydration Sticks are proof that big performance can come in small
             packages.
           </p>
-          <NavLink to="/products/sticks">
-            VIEW <i class="ri-arrow-right-line"></i>
-          </NavLink>
+          <a href="/products/sticks">
+            VIEW <i className="ri-arrow-right-line"></i>
+          </a>
         </div>
       </div>
     </div>

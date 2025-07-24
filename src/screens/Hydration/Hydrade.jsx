@@ -3,15 +3,17 @@ import "./Hydrade.css";
 import { greenny, blue, red, wild } from "./Imgs.js";
 import { products } from "./products.js";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, getCartTotal } from "../../features/itemSlice";
 
 const Hydrade = () => {
-   React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  const dispatch = useDispatch();
+  dispatch(getCartTotal());
+
   return (
     <div className="hydrade-container">
       <h1>HYDRATION</h1>
-      <NavLink to={-1} className="backArrow">
+      <NavLink to="/products" className="backArrow">
         <div>
           <i class="ri-arrow-left-line"></i>
         </div>
@@ -32,11 +34,24 @@ const Hydrade = () => {
           <div key={index} className="product-item">
             <img src={product.img} alt={product.title} />
             <h2>{product.title}</h2>
-            <a href={product.href}>LEARN MORE</a>
+            <button
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    id: product.id,
+                    img: product.img,
+                    name: product.title,
+                    price: product.price,
+                    qty: 1,
+                  })
+                )
+              }
+            >
+              ADD TO CART
+            </button>
           </div>
         ))}
       </div>
-      
     </div>
   );
 };

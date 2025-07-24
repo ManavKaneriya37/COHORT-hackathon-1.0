@@ -128,6 +128,7 @@ body {
       border: none;
       border-radius: 0.5rem;
       margin-top: 1rem;
+      cursor: pointer;
       font-weight: 600;
       color: #fff;
       letter-spacing: 0.1rem; /* 0.4rem */
@@ -207,6 +208,7 @@ body {
       outline: none;
       border: none;
       border-radius: 0.5rem;
+      cursor: pointer;
       font-weight: 600;
       color: #fff;
       letter-spacing: 0.1rem;
@@ -275,6 +277,7 @@ body {
       background-color: black;
       outline: none;
       border: none;
+      cursor: pointer;
       border-radius: 0.5rem;
       font-weight: 600;
       color: #fff;
@@ -317,6 +320,8 @@ nav {
 
 .left,
 .right {
+  font-family: "Outfit";
+  text-transform: uppercase;
   display: none; /* Hide by default, will show in desktop media query */
 }
 
@@ -327,8 +332,47 @@ nav {
   font-weight: 700;
   letter-spacing: -0.3rem;
 }
+/* Base styles for NavLinks */
+.left a,
+.right a {
+  text-decoration: none; /* Removes default underline */
+  position: relative;
+  padding-bottom: 3px; /* Space for the underline */
+  color: inherit; /* Inherit color or set a default */
+}
 
-/* Add hamburger menu styles */
+/* Underline on hover */
+.left a::after,
+.right a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px; /* Thickness of the underline */
+  bottom: 0;
+  left: 0;
+  background-color: currentColor; /* Matches the text color */
+  transition: width 0.3s ease-out; /* Smooth transition for the underline */
+}
+
+.left a:hover::after,
+.right a:hover::after {
+  width: 100%; /* Expands the underline on hover */
+}
+
+/* Underline for active NavLink (React Router) */
+.left a.active::after,
+.right a.active::after {
+  width: 100%; /* Keeps the underline when the link is active */
+}
+
+
+.hero-heading .word-line {
+  display: block; /* Each word-line takes its own line */
+  white-space: nowrap; /* Characters within the word-line stay on one line */
+  margin-bottom: 0.15em; /* Vertical spacing between "Refuel.", "Energy.", etc. */
+}
+
+
 .hammenu {
   position: fixed;
   top: 1rem;
@@ -372,9 +416,10 @@ nav {
 
   h1 {
     font-size: clamp(2rem, 5vw, 4rem);
-    width: clamp(40%, 60%, 90%);
+    /* width: clamp(40%, 60%, 90%); */
     line-height: 1.2;
     text-align: left;
+    transition: 1s ease;
   }
 
   img {
@@ -432,7 +477,7 @@ nav {
     cursor: pointer;
   }
 
-  button:hover {
+  a:hover {
     background-color: #000;
     color: #fff;
     border-radius: 2px;
@@ -515,7 +560,7 @@ nav {
   align-items: center;
   position: relative;
   flex-direction: column;
-  margin-bottom: 8rem;
+  margin: 3rem 0 8rem 0;
 
   h3 {
     font-weight: 300;
@@ -526,11 +571,32 @@ nav {
     line-height: 1;
   }
 
+   button {
+        margin-top: 0.8rem;
+        padding: 0.8rem 0.3rem;
+        width: 18rem;
+        outline: none;
+        border: 1px solid black;
+        background-color: transparent;
+        transition: 0.4s ease-in;
+        cursor: pointer;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+      }
+
+      button:hover {
+        background-color: #000;
+        color: #fff;
+      }
+
   .imgs {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20em;
+    margin-top: 1.75rem;
+    height: 80vh;
 
     img {
       height: 20rem;
@@ -539,6 +605,7 @@ nav {
       rotate: -90deg;
     }
   }
+
 }
 
 .view4 {
@@ -554,7 +621,7 @@ nav {
     text-align: center;
     letter-spacing: 2rem;
     font-family: "Outfit", sans-serif;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
   }
 
   .canvas-row {
@@ -592,12 +659,13 @@ nav {
     /* font-family: "Outfit", sans-serif; */
   }
 
-  .canvas-box button {
+  .canvas-box a {
     padding: 0.8rem 0.3rem;
     width: 12rem;
     outline: none;
     border: 1px solid black;
     background-color: #000;
+    text-align: center;
     color: #fff;
     transition: 0.4s ease-in;
     cursor: pointer;
@@ -606,7 +674,7 @@ nav {
     letter-spacing: 0.2rem;
   }
 
-  .canvas-box button:hover {
+  .canvas-box a:hover {
     background-color: transparent;
     color: #000;
   }
@@ -745,6 +813,7 @@ footer {
       font-family: "Outfit";
       font-weight: 300;
       margin: 1.5rem 0;
+
     }
     input {
       padding: 0.8rem 1rem;
@@ -753,6 +822,7 @@ footer {
       outline: none;
       border: none;
       border-radius: 5px;
+      background-color: #fff;
     }
     #detail {
       color: #fff;

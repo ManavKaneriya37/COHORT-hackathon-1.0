@@ -2,8 +2,8 @@
 
   .backArrow{
     text-decoration: none;
-    position: absolute;
-    top: 4.5rem;
+    position: fixed;
+    top: 6.5rem;
     left: 1rem;
 
     div {
@@ -78,7 +78,7 @@
         font-weight: bold;
       }
 
-      a {
+      button {
         border: 1px solid #000;
         padding: 0.8rem 1.8rem;
         font-family: "Funnel Sans", sans-serif;
@@ -90,7 +90,7 @@
         text-decoration: none;
         cursor: pointer;
       }
-      a:hover {
+      button:hover {
         background-color: #000;
         color: #fff;
         transition: all 0.3s ease-in-out;
