@@ -1,24 +1,20 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-import { viteStaticCopy } from "vite-plugin-static-copy";
+import { viteStaticCopy } from "vite-plugin-static-copy"; // No tailwindcss plugin needed here
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(),
     viteStaticCopy({
       targets: [
         {
-          src: "public/_redirects",
-          dest: ".", // place at root of dist/
+          src: "public/_redirects", // Make sure the file exists at this path
+          dest: ".", // This puts it in root of dist/
         },
       ],
     }),
   ],
   build: {
-    outDir: 'dist',
+    outDir: "dist",
   },
-  base: "/",
 });
