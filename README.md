@@ -12,7 +12,7 @@ In a digital world full of static and lifeless pages, our goal was to **build an
 
 ## ✨ Live Demo
 
-[🔗 View Live Project](#)  
+[🔗 View Live Project](https://prime-drinks-project.onrender.com/)  
 _(Deploy your project on Vercel, Netlify, or Render and add the link here)_
 
 ---
@@ -37,7 +37,6 @@ _(Deploy your project on Vercel, Netlify, or Render and add the link here)_
 
 ### 🎞️ Cinematic Animations
 - Smooth **page transitions** and element animations using GSAP + ScrollTrigger.
-- **Parallax** effects to simulate depth and motion.
 - Subtle **skew, scale, and opacity** transitions for modern UI vibes.
 
 ### 🧭 Seamless Scroll Experience
@@ -59,17 +58,23 @@ _(Deploy your project on Vercel, Netlify, or Render and add the link here)_
 
 ## 📂 Folder Structure (Simplified)
 
+```txt
+PRIME-FE-HACKATHON/
 ├── public/
-│ └── _redirects # SPA routing support for Vite (Render)
+│   └── _redirects              # SPA routing support for Vite
 ├── src/
-│ ├── assets/ # Images, models, textures
-│ ├── components/ # Reusable UI components
-│ ├── screens/ # Route-based pages
-│ ├── features/ # Redux slices and logic
-│ ├── App/ # App Stores
-│ ├── App.jsx # Root component
-│ └── main.jsx # Vite entry point
-
+│   ├── App/                    # App-level stores and global logic
+│   ├── assets/                 # Images, models, textures, media
+│   ├── components/             # Reusable UI components
+│   ├── features/               # Redux slices (e.g., car feature)
+│   ├── screens/                # Route-based pages/screens
+│   ├── canvas/                 # 3D scene setup (React Three Fiber)
+│   ├── App.jsx                 # Root component
+│   └── main.jsx                # Entry point for Vite
+├── .gitignore
+├── index.html
+├── package.json
+└── vite.config.js
 
 ---
 
