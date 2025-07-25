@@ -4,9 +4,17 @@
     font-size: 2.5em;
     text-align: center;
   }
+
+  .home-content{
+    overflow-x: hidden;
+  }
   nav {
     display: none;
     background: rgba(0, 0, 0, 0.8); /* Darker background for mobile */
+  }
+
+  .foot .top .box2 a{
+    font-size: 1rem;
   }
 
   /* nav .left,
