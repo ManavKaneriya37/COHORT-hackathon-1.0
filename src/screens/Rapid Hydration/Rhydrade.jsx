@@ -5,15 +5,15 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, getCartTotal } from "../../features/itemSlice.js";
 import { toast } from "react-toastify";
-import lenis from "../../components/lenisInstance.js"
+import lenis from "../../components/lenisInstance.js";
 
 const Rhydrade = () => {
   const dispatch = useDispatch();
   dispatch(getCartTotal());
 
   React.useEffect(() => {
-    lenis.scrollTo(0,0);
-}, []);
+    lenis.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="rhydrade-container">
@@ -53,7 +53,10 @@ const Rhydrade = () => {
           <img src={p2} alt="Rapid Rehydration Product" />
           <h2>Berry Citrus Rush</h2>
           <button
-            onClick={() =>
+            onClick={() => {
+              toast.success("Item added to cart!", {
+                autoClose: 2000,
+              });
               dispatch(
                 addToCart({
                   id: 20,
@@ -62,8 +65,8 @@ const Rhydrade = () => {
                   price: 2.99,
                   qty: 1,
                 })
-              )
-            }
+              );
+            }}
           >
             ADD TO CART
           </button>
@@ -72,7 +75,10 @@ const Rhydrade = () => {
           <img src={p3} alt="Rapid Rehydration Product" />
           <h2>Glacier Orange</h2>
           <button
-            onClick={() =>
+            onClick={() => {
+              toast.success("Item added to cart!", {
+                autoClose: 2000,
+              });
               dispatch(
                 addToCart({
                   id: 21,
@@ -81,8 +87,8 @@ const Rhydrade = () => {
                   price: 2.99,
                   qty: 1,
                 })
-              )
-            }
+              );
+            }}
           >
             ADD TO CART
           </button>
