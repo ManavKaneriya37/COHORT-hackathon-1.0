@@ -293,16 +293,20 @@ text-align: center;
     width: 100%;
   }
 
-  footer .user-stuff {
+  .foot .user-stuff {
     flex-direction: column-reverse;
     align-items: flex-start;
     gap: 2em;
   }
 
-  footer .user-stuff .links {
+  .foot .user-stuff .links {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5em;
+    a{
+    font-size: 1rem;
+
+    }
   }
 
   .slide1 {
@@ -334,6 +338,8 @@ text-align: center;
       top: unset;
     }
   }
+
+
 }
 
 @media (min-height: 900px) {
